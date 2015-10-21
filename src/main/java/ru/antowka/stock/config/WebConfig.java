@@ -15,15 +15,15 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
  */
 
 @Configuration
-@ComponentScan("com.concretepage")
+@ComponentScan("ru.antowka.stock")
 @EnableWebMvc
-@Import({ WebSocketConfig.class })
+@Import({ WebSocketConfig.class, SecurityConfig.class, WebSocketSecurityConfig.class })
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public UrlBasedViewResolver setupViewResolver() {
         UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-        resolver.setPrefix("/jsp/");
+        resolver.setPrefix("/WEB-INF/templates/");
         resolver.setSuffix(".jsp");
         resolver.setViewClass(JstlView.class);
         return resolver;
@@ -31,6 +31,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/js/");
+        registry.addResourceHandler("/static/js/**").addResourceLocations("/WEB-INF/static/js/");
     }
 }
