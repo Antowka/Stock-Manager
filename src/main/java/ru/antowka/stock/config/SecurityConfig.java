@@ -5,6 +5,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import javax.sql.DataSource;
+
 /**
  * Created by Anton Nikanorov on 21.10.15.
  */
@@ -12,11 +14,28 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    private DataSource dataSource;
+
+    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
-        auth.inMemoryAuthentication()
-                .withUser("user")
-                .password("password")
-                .roles("USER");
+        auth.jdbcAuthentication()
+                .dataSource(dataSource)
+                .usersByUsernameQuery(getUserQuery())
+                .authoritiesByUsernameQuery(getAuthoritiesQuery());
+    }
+
+    private String getUserQuery() {
+        return "SELECT username, password "
+                + "FROM users "
+                + "WHERE username = ?";
+    }
+
+    private String getAuthoritiesQuery() {
+        return "SELECT username, role_name as authority"
+                + "FROM users, user_role, role"
+                + "WHERE users.user_id = user_role.user_id "
+                + "AND role.role_id = users.user_id "
+                + "AND users.login = ? ";
     }
 }
