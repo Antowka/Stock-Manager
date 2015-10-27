@@ -20,7 +20,6 @@ public class WebPage {
      */
     @RequestMapping(method = RequestMethod.GET)
     public String signIn(ModelMap model) {
-
         model.addAttribute("message", "SignIn");
         return "index";
     }

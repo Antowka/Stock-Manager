@@ -3,6 +3,11 @@
  */
 
 socket = new SockJS('/websoc');
-socket.addEventListener('open', function () {
+stompClient = Stomp.over(socket);
+stompClient.connect('antowka34', 'la136dop', function(frame) {
+    console.log(frame);
 
+    stompClient.subscribe("/portfolio", function(message) {
+
+    });
 });

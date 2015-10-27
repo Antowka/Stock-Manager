@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
-import org.springframework.orm.hibernate3.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -22,7 +22,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:db.properties" })
+@PropertySource({ "classpath:properties/db.properties" })
 @ComponentScan({ "ru.antowka.stock.dao" })
 public class HibernateConfig {
 
@@ -33,7 +33,7 @@ public class HibernateConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(restDataSource());
-        sessionFactory.setPackagesToScan(new String[] { "org.baeldung.spring.persistence.model" });
+        sessionFactory.setPackagesToScan(new String[] { "ru.antowka.stock.dao" });
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
@@ -67,8 +67,8 @@ public class HibernateConfig {
     Properties hibernateProperties() {
         return new Properties() {
             {
-                setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-                setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
+                setProperty("hibernate.dialect", env.getProperty("jdbc.dialect"));
+                setProperty("hibernate.show_sql", env.getProperty("jdbc.hibernate.show_sql"));
                 setProperty("hibernate.globally_quoted_identifiers", "true");
             }
         };
