@@ -19,8 +19,20 @@ public class WebPage {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public String signIn(ModelMap model) {
-        model.addAttribute("message", "SignIn");
+    public String indexPage(ModelMap model) {
+        model.addAttribute("message", "Index Page");
         return "index";
+    }
+
+    @RequestMapping(value = "login", method = RequestMethod.GET)
+    public String loginPage(ModelMap model) {
+        model.addAttribute("message", "Login Page");
+        return "login";
+    }
+
+    @RequestMapping(value = "portfolio", method = RequestMethod.GET)
+    public String portfolioPage(ModelMap model) {
+        model.addAttribute("message", "Portfolio Page");
+        return "portfolio";
     }
 }

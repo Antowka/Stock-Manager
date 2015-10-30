@@ -14,6 +14,8 @@
 <body>
     <p>SingIn</p>
 
+    <a href="/login">Login</a>
+
     <footer>
         <script type="text/javascript" src="static/js/stomp.min.js"></script>
         <script type="text/javascript" src="static/js/sockjs.min.js"></script>

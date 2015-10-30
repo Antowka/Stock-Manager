@@ -11,9 +11,7 @@ import org.springframework.security.config.annotation.web.socket.AbstractSecurit
 public class WebSocketSecurityConfig extends AbstractSecurityWebSocketMessageBrokerConfigurer {
 
     protected void configureInbound(MessageSecurityMetadataSourceRegistry messages) {
-        messages
-                .simpDestMatchers("/login").permitAll()
-                .simpSubscribeDestMatchers("/status").authenticated();
+        messages.simpSubscribeDestMatchers("/ws_portfolio").authenticated();
     }
 
     @Override

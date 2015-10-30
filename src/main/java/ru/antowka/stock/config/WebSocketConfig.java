@@ -22,6 +22,6 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/websoc").withSockJS().setSessionCookieNeeded(true);
+        registry.addEndpoint("/websoc").withSockJS();
     }
 }
