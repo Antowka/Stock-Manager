@@ -14,12 +14,11 @@
 <body>
     <p>SingIn</p>
 
-    <a href="/login">Login</a>
+    <form name="loginForm" method="post" action="/auth_validate">
+        <input type="text" name="username" placeholder="username" />
+        <input type="password" name="password" placeholder="password" />
+        <input name="submit" type="submit" value="Login" />
+    </form>
 
-    <footer>
-        <script type="text/javascript" src="static/js/stomp.min.js"></script>
-        <script type="text/javascript" src="static/js/sockjs.min.js"></script>
-        <script type="text/javascript" src="static/js/main.js"></script>
-    </footer>
 </body>
 </html>

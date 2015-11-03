@@ -1,9 +1,13 @@
 package ru.antowka.stock.controller;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by Anton Nikanorov on 22.10.15.
@@ -15,19 +19,12 @@ public class WebPage {
     /**
      * Index page
      *
-     * @param model
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public String indexPage(ModelMap model) {
-        model.addAttribute("message", "Index Page");
-        return "index";
-    }
-
-    @RequestMapping(value = "login", method = RequestMethod.GET)
-    public String loginPage(ModelMap model) {
-        model.addAttribute("message", "Login Page");
-        return "login";
+    public String indexPage() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return !(auth instanceof AnonymousAuthenticationToken)?"redirect:/portfolio":"index";
     }
 
     @RequestMapping(value = "portfolio", method = RequestMethod.GET)

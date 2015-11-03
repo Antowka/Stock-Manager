@@ -4,15 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.encoding.Md4PasswordEncoder;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 import javax.sql.DataSource;
@@ -31,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
 
         web.ignoring()
-           .antMatchers("/static/**");
+           .antMatchers("/static/js/**");
     }
 
     @Autowired
@@ -47,23 +44,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()  // Refactor login form
-                .formLogin()
-                .loginProcessingUrl("/auth_validate")
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/portfolio")
-                .loginPage("/login")
-                .failureUrl("/login?error")
-                .permitAll()
-                .and()
-                .logout()
-                .logoutSuccessUrl("/login?logout")
-                .logoutUrl("/logout")
-                .permitAll()
-                .and()
-                .authorizeRequests()
-                .anyRequest().authenticated();
+            .csrf().disable()  // Refactor login form
+            .formLogin()
+            .loginProcessingUrl("/auth_validate")
+            .usernameParameter("username")
+            .passwordParameter("password")
+            .defaultSuccessUrl("/portfolio")
+            .loginPage("/")
+            .failureUrl("/?error")
+            .permitAll()
+            .and()
+            .logout()
+            .logoutSuccessUrl("/?logout")
+            .logoutUrl("/logout")
+            .permitAll()
+            .and()
+            .authorizeRequests()
+            .antMatchers("/static/**").permitAll()
+            .antMatchers("/").anonymous()
+            .anyRequest().authenticated();
     }
 
     @Bean(name="myAuthenticationManager")
