@@ -1,6 +1,8 @@
 package ru.antowka.stock.model;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Anton Nikanorov on 21.10.15.
@@ -42,5 +44,15 @@ public abstract class Ticker {
 
     public void setBoardId(String boardId) {
         this.boardId = boardId;
+    }
+
+    /**
+     * Get last price in current range
+     *
+     * @return
+     */
+    public Price getLastTick(){
+        Optional<Price> priceLast = price.stream().reduce((priceA, priceZ) -> priceZ);
+        return priceLast.get();
     }
 }
