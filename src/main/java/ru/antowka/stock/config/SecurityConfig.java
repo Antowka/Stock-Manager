@@ -65,12 +65,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .anyRequest().authenticated();
     }
 
-    @Bean(name="myAuthenticationManager")
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-
     private String getUserQuery() {
         return "SELECT username, password, enabled "
                 + "FROM users "

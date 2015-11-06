@@ -8,16 +8,13 @@ stompClient.connect({}, function(frame) {
 
     console.log(frame);
 
-    stompClient.send("/app/login", {}, JSON.stringify({login:"antowka", password:"la136dop"}));
+    stompClient.subscribe("/response/status", function(message) {
+        console.log(message);
+    });
 
-    setTimeout(function(){
+    var ticker = {
+        tickerid:1
+    };
 
-        stompClient.send("/app/login2", {}, JSON.stringify({login:"antowka1"}));
-
-        stompClient.subscribe("/response/status", function(message) {
-            console.log(message);
-        });
-    }, 2000);
-
-
+    stompClient.send("/app/ticker", {}, JSON.stringify(ticker));
 });
