@@ -4,13 +4,19 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 
 /**
- * Created by Anton on 31.10.15.
+ * Created by Anton Nik on 31.10.15.
  */
 public class WebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] {WebSocketConfig.class, SecurityConfig.class, WebSocketSecurityConfig.class, HibernateConfig.class};
+        return new Class[] {
+                AsyncConfig.class,
+                WebSocketConfig.class,
+                SecurityConfig.class,
+                WebSocketSecurityConfig.class,
+                HibernateConfig.class
+        };
     }
 
     @Override

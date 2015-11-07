@@ -17,6 +17,14 @@ public interface TickerDao {
     void updatePricesForTicker(Ticker ticker);
 
     /**
+     * Get ticker by tickerId
+     *
+     * @param tickerId
+     * @return Ticker
+     */
+    Ticker getTickerById(int tickerId);
+
+    /**
      * Get last price from DB by Ticker
      *
      * @param ticker

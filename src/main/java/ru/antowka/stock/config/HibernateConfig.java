@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
@@ -22,7 +21,6 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:properties/db.properties" })
 @ComponentScan({ "ru.antowka.stock.dao" })
 public class HibernateConfig {
 
@@ -50,8 +48,8 @@ public class HibernateConfig {
         return dataSource;
     }
 
-    @Bean
     @Autowired
+    @Bean(name = "transactionManager")
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(sessionFactory);
@@ -69,7 +67,8 @@ public class HibernateConfig {
             {
                 setProperty("hibernate.dialect", env.getProperty("jdbc.dialect"));
                 setProperty("hibernate.show_sql", env.getProperty("jdbc.hibernate.show_sql"));
-                setProperty("hibernate.globally_quoted_identifiers", "true");
+                setProperty("format_sql", env.getProperty("jdbc.hibernate.format_sql"));
+                setProperty("use_sql_comments", env.getProperty("jdbc.hibernate.use_sql_comments"));
             }
         };
     }

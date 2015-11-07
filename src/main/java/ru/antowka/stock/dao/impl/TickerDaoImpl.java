@@ -32,24 +32,29 @@ public class TickerDaoImpl implements TickerDao {
 
     @Override
     @Transactional
+    public Ticker getTickerById(int tickerId) {
+
+        return (Ticker)sessionFactory
+                .getCurrentSession()
+                .get(Ticker.class, tickerId);
+    }
+
+    @Override
+    @Transactional
     public Ticker getLastPrice(Ticker ticker) {
 
         List<Price> prices = new ArrayList<>();
 
-        try {
-            prices.add(
-                    (Price) sessionFactory
-                            .getCurrentSession()
-                            .createCriteria(Price.class)
-                            .add(Restrictions.eq("tickerId", ticker.getTickerId()))
-                            .addOrder(Order.desc("datetime"))
-                            .uniqueResult()
-            );
+        prices.add(
+                (Price) sessionFactory
+                        .getCurrentSession()
+                        .createCriteria(Price.class)
+                        .add(Restrictions.eq("tickerId", ticker.getTickerId()))
+                        .addOrder(Order.desc("datetime"))
+                        .uniqueResult()
+        );
 
-            ticker.setPrice(prices);
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
+        ticker.setPrice(prices);
 
         return ticker;
     }

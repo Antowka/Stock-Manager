@@ -1,15 +1,8 @@
 package ru.antowka.stock.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.ViewResolver;
+import org.springframework.context.annotation.*;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
-import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 /**
  * Created by Anton Nikanorov on 21.10.15.
@@ -18,7 +11,6 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @Configuration
 @ComponentScan("ru.antowka.stock")
 @EnableWebMvc
-@EnableTransactionManagement
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
