@@ -1,71 +1,77 @@
 package ru.antowka.stock.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Entity;
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Created by Anton Nikanorov on 21.10.15.
  */
 @Entity
-public class Price {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Price implements Serializable{
 
-    private Long HIGH;
+    private Double high;
 
-    private Long LOW;
+    private Double low;
 
-    private Long OPEN;
+    private Double open;
 
-    private Long LAST;
+    private Double last;
 
-    private Long VALUE;
+    private Double value;
 
-    private LocalDateTime SYSTIME;
+    private LocalDateTime systime;
 
-    public LocalDateTime getSYSTIME() {
-        return SYSTIME;
+    public LocalDateTime getSystime() {
+        return systime;
     }
 
-    public void setSYSTIME(LocalDateTime SYSTIME) {
-        this.SYSTIME = SYSTIME;
+    public void setSystime(LocalDateTime systime) {
+
+        this.systime = systime;
     }
 
-    public Long getHIGH() {
-        return HIGH;
+    public Double getHigh() {
+        return high;
     }
 
-    public void setHIGH(Long HIGH) {
-        this.HIGH = HIGH;
+    public void setHigh(Double high) {
+        this.high = high;
     }
 
-    public Long getLOW() {
-        return LOW;
+    public Double getLow() {
+        return low;
     }
 
-    public void setLOW(Long LOW) {
-        this.LOW = LOW;
+    public void setLow(Double low) {
+        this.low = low;
     }
 
-    public Long getOPEN() {
-        return OPEN;
+    public Double getOpen() {
+        return open;
     }
 
-    public void setOPEN(Long OPEN) {
-        this.OPEN = OPEN;
+    public void setOpen(Double open) {
+        this.open = open;
     }
 
-    public Long getLAST() {
-        return LAST;
+    public Double getLast() {
+        return last;
     }
 
-    public void setLAST(Long LAST) {
-        this.LAST = LAST;
+    public void setLast(Double last) {
+        this.last = last;
     }
 
-    public Long getVALUE() {
-        return VALUE;
+    public Double getValue() {
+        return value;
     }
 
-    public void setVALUE(Long VALUE) {
-        this.VALUE = VALUE;
+    public void setValue(Double value) {
+        this.value = value;
     }
 }

@@ -1,7 +1,8 @@
 package ru.antowka.stock.service;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.Async;
@@ -9,10 +10,12 @@ import org.springframework.stereotype.Service;
 import ru.antowka.stock.dao.TickerDao;
 import ru.antowka.stock.model.Price;
 import ru.antowka.stock.model.Ticker;
+import ru.antowka.stock.utils.Json;
 
-import java.net.URL;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -44,13 +47,14 @@ public class TickerService {
 
         LocalDateTime startDateTime = null;
         LocalDateTime currentDateTime = LocalDateTime.now();
+        List<Price> newPrices = new ArrayList<Price>();
 
-        //check on exist prices in List
+                //check on exist prices in List
         List<Price> prices = ticker.getPrice();
 
         if(!prices.isEmpty() && prices.get(0) != null) {
 
-            startDateTime = prices.get(0).getSYSTIME();
+            startDateTime = prices.get(0).getSystime();
         }else{
 
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(env.getProperty("main.dateTimeFormat"));
@@ -58,26 +62,37 @@ public class TickerService {
         }
 
         //iterate dates range
-        for(LocalDateTime startDate = startDateTime; startDate
-                .isBefore(currentDateTime); startDate = startDate.plusDays(1)) {
+        for(LocalDateTime startDate = startDateTime; startDate.isBefore(currentDateTime); startDate = startDate.plusDays(1)) {
 
             try {
 
                 DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy_MM_dd");
 
-                URL url = new URL("http://www.micex.ru/issrpc/marketdata/stock/shares/daily/short/" +
-                        "result_" +
-                        startDate.format(dateTimeFormatter) +
-                        ".json?boardid=" +
-                        ticker.getBoardId() +
-                        "&secid=" +
-                        ticker.getTickerName()
-                );
+                String url = "http://www.micex.ru/issrpc/marketdata/stock/shares/daily/short/" +
+                                "result_" +
+                                startDate.format(dateTimeFormatter) +
+                                ".json?boardid=" +
+                                ticker.getBoardId() +
+                                "&secid=" +
+                                ticker.getTickerName();
 
-                ObjectMapper mapper = new ObjectMapper();
-                
-                List<Price> price = mapper.readValue(url, new TypeReference<List<Price>>(){});
-                String test = "";
+                JSONArray json = Json.readJsonFromUrl(url);
+
+                JSONObject jsonPrice = (JSONObject)json.get(1);
+
+                //create new Price from JSON
+                Price price = new Price();
+                price.setHigh(jsonPrice.getDouble("HIGH"));
+                price.setOpen(jsonPrice.getDouble("OPEN"));
+                price.setLow(jsonPrice.getDouble("LOW"));
+                price.setLast(jsonPrice.getDouble("LAST"));
+                price.setValue(jsonPrice.getDouble("VALUE"));
+
+                dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                LocalDateTime systime = LocalDateTime.parse(jsonPrice.getString("SYSTIME"), dateTimeFormatter);
+                price.setSystime(systime);
+
+                newPrices.add(price);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -85,6 +100,7 @@ public class TickerService {
 
 
             System.out.println(startDate.toString());
+
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {

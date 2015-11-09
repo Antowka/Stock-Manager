@@ -35,6 +35,7 @@ dependencies {
     compile 'org.hibernate:hibernate-core:4.3.11.Final'
     compile 'org.postgresql:postgresql:9.4-1201-jdbc41'
     compile 'org.apache.commons:commons-dbcp2:2.1'
+    compile 'org.json:json:20150729'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.6.0'
 
     providedRuntime 'javax.servlet:javax.servlet-api:4.0.0-b01'
