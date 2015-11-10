@@ -1,30 +1,57 @@
 package ru.antowka.stock.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 /**
  * Created by Anton Nikanorov on 21.10.15.
  */
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Table(name = "price")
 public class Price implements Serializable{
 
+    @Id
+    @GeneratedValue
+    @Column(name = "price_id")
+    private int priceId;
+
+    @Column(name = "ticker_id")
+    private int tickerId;
+
+    @Column(name = "price_high")
     private Double high;
 
+    @Column(name = "price_low")
     private Double low;
 
+    @Column(name = "price_open")
     private Double open;
 
+    @Column(name = "price_close")
     private Double last;
 
+    @Column(name = "value")
     private Double value;
 
+    @Column(name = "datetime")
     private LocalDateTime systime;
+
+    public int getPriceId() {
+        return priceId;
+    }
+
+    public void setPriceId(int priceId) {
+        this.priceId = priceId;
+    }
+
+    public int getTickerId() {
+        return tickerId;
+    }
+
+    public void setTickerId(int tickerId) {
+        this.tickerId = tickerId;
+    }
 
     public LocalDateTime getSystime() {
         return systime;

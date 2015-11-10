@@ -1,6 +1,7 @@
 package ru.antowka.stock.dao;
 
 
+import ru.antowka.stock.model.Price;
 import ru.antowka.stock.model.Ticker;
 import java.time.LocalDateTime;
 
@@ -14,7 +15,7 @@ public interface TickerDao {
      *
      * @param ticker
      */
-    void updatePricesForTicker(Ticker ticker);
+    Price parsPricesForTicker(Ticker ticker, LocalDateTime date);
 
     /**
      * Get ticker by tickerId

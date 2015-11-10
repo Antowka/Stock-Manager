@@ -2,6 +2,7 @@ package ru.antowka.stock.model;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,18 +11,18 @@ import java.util.Optional;
  */
 @Entity
 @Table(name = "ticker")
-public class Ticker {
+public class Ticker implements Serializable {
 
     @Id
     @GeneratedValue
     @Column(name = "ticker_id")
     private int tickerId;
 
-
+    @OneToMany(targetEntity=Price.class, mappedBy="tickerId", fetch=FetchType.EAGER)
     private List<Price> price;
 
     @Column(name = "ticker_type")
-    private String ticker_type;
+    private String tickerType;
 
     @Column(name = "ticker_name")
     private String tickerName;
@@ -32,12 +33,12 @@ public class Ticker {
     @Column(name = "board_id")
     private String boardId;
 
-    public String getTicker_type() {
-        return ticker_type;
+    public String getTickerType() {
+        return tickerType;
     }
 
-    public void setTicker_type(String ticker_type) {
-        this.ticker_type = ticker_type;
+    public void setTickerType(String ticker_type) {
+        this.tickerType = ticker_type;
     }
 
     public int getTickerId() {

@@ -21,7 +21,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "ru.antowka.stock.dao" })
+@ComponentScan
 public class HibernateConfig {
 
     @Autowired
@@ -31,7 +31,7 @@ public class HibernateConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(restDataSource());
-        sessionFactory.setPackagesToScan(new String[] { "ru.antowka.stock.dao" });
+        sessionFactory.setPackagesToScan(new String[] { "ru.antowka.stock" });
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
