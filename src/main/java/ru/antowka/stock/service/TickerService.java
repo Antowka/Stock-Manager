@@ -40,7 +40,10 @@ public class TickerService {
     public void updateTickerPrices(Ticker ticker){
 
         ticker = tickerDao.getTickerById(1);
-        ticker = tickerDao.getLastPrice(ticker);
+        //ticker = tickerDao.getLastPrice(ticker);
+        ticker.setTickerName("GAZP");
+        ticker.setBoardId("TQBR");
+        ticker.setTickerType("shares");
 
         LocalDateTime startDateTime = null;
         LocalDateTime currentDateTime = LocalDateTime.now();

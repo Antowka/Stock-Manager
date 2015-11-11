@@ -1,5 +1,9 @@
 package ru.antowka.stock.model;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -9,6 +13,8 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "price")
+@Component
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class Price implements Serializable{
 
     @Id

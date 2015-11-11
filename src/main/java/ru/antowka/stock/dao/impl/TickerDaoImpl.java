@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.antowka.stock.dao.TickerDao;
 import ru.antowka.stock.model.Price;
 import ru.antowka.stock.model.Ticker;
+import ru.antowka.stock.model.factory.MyBeanFactory;
 import ru.antowka.stock.utils.Json;
 
 import java.io.IOException;
@@ -27,6 +28,9 @@ public class TickerDaoImpl implements TickerDao {
 
     @Autowired
     private SessionFactory sessionFactory;
+
+    @Autowired
+    private MyBeanFactory myBeanFactory;
 
     @Override
     @Transactional
@@ -59,7 +63,7 @@ public class TickerDaoImpl implements TickerDao {
 
 
         //create new Price from JSON
-        Price price = new Price();
+        Price price = myBeanFactory.getNewPrice();
         price.setHigh(jsonPrice.getDouble("HIGH"));
         price.setOpen(jsonPrice.getDouble("OPEN"));
         price.setLow(jsonPrice.getDouble("LOW"));
