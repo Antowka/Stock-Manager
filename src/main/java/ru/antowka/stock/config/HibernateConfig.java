@@ -7,8 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.hibernate5.support.OpenSessionInViewFilter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
@@ -20,7 +21,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-public class HibernateConfig {
+public class HibernateConfig extends OpenSessionInViewFilter {
 
     @Autowired
     private Environment env;

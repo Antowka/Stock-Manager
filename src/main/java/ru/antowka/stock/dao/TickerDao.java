@@ -15,7 +15,7 @@ public interface TickerDao {
      *
      * @param ticker
      */
-    Price parsPricesForTicker(Ticker ticker, LocalDateTime date);
+    void parsPricesForTicker(Ticker ticker, LocalDateTime date);
 
     /**
      * Get ticker by tickerId

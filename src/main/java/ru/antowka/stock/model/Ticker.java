@@ -14,15 +14,16 @@ import java.util.Optional;
 public class Ticker implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ticker_id")
     private int tickerId;
 
-    @OneToMany(targetEntity=Price.class, mappedBy="tickerId", fetch=FetchType.EAGER)
+    @OneToMany(targetEntity=Price.class, mappedBy="ticker", cascade=CascadeType.ALL)
     private List<Price> price;
 
-    @Column(name = "ticker_type")
-    private String tickerType;
+    @ManyToOne
+    @JoinColumn(name = "ticker_type_id", nullable = false)
+    private TickerType tickerTypeId;
 
     @Column(name = "ticker_name")
     private String tickerName;
@@ -33,12 +34,12 @@ public class Ticker implements Serializable {
     @Column(name = "board_id")
     private String boardId;
 
-    public String getTickerType() {
-        return tickerType;
+    public TickerType getTickerTypeId() {
+        return tickerTypeId;
     }
 
-    public void setTickerType(String ticker_type) {
-        this.tickerType = ticker_type;
+    public void setTickerTypeId(TickerType ticker_type) {
+        this.tickerTypeId = ticker_type;
     }
 
     public int getTickerId() {

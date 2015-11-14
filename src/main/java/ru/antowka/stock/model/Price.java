@@ -1,5 +1,6 @@
 package ru.antowka.stock.model;
 
+import org.hibernate.annotations.Type;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -12,18 +13,19 @@ import java.time.LocalDateTime;
  * Created by Anton Nikanorov on 21.10.15.
  */
 @Entity
-@Table(name = "price")
 @Component
+@Table(name = "price")
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class Price implements Serializable{
 
     @Id
-    @GeneratedValue
-    @Column(name = "price_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "price_id", updatable = false, nullable = false)
     private int priceId;
 
-    @Column(name = "ticker_id")
-    private int tickerId;
+    @ManyToOne
+    @JoinColumn(name = "ticker_id")
+    private Ticker ticker;
 
     @Column(name = "price_high")
     private Double high;
@@ -40,7 +42,7 @@ public class Price implements Serializable{
     @Column(name = "value")
     private Double value;
 
-    @Column(name = "datetime")
+    @Column(name = "datetime", columnDefinition="TIMESTAMP")
     private LocalDateTime systime;
 
     public int getPriceId() {
@@ -51,12 +53,12 @@ public class Price implements Serializable{
         this.priceId = priceId;
     }
 
-    public int getTickerId() {
-        return tickerId;
+    public Ticker getTicker() {
+        return ticker;
     }
 
-    public void setTickerId(int tickerId) {
-        this.tickerId = tickerId;
+    public void setTicker(Ticker ticker) {
+        this.ticker = ticker;
     }
 
     public LocalDateTime getSystime() {

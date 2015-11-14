@@ -1,11 +1,15 @@
 package ru.antowka.stock.dao.impl;
 
+import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.antowka.stock.dao.TickerDao;
@@ -26,6 +30,8 @@ import java.util.List;
 @Repository
 public class TickerDaoImpl implements TickerDao {
 
+    private Logger logger = Logger.getLogger(TickerDaoImpl.class);
+
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -34,14 +40,15 @@ public class TickerDaoImpl implements TickerDao {
 
     @Override
     @Transactional
-    public Price parsPricesForTicker(Ticker ticker, LocalDateTime date) {
+    @SuppressWarnings("unchecked")
+    public void parsPricesForTicker(Ticker ticker, LocalDateTime date) {
 
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String dateInString = date.toLocalDate().format(dateTimeFormatter);
 
         String url = "http://www.micex.ru/issrpc/marketdata/stock/" +
-                        ticker.getTickerType() +
+                        ticker.getTickerTypeId().getTickerTypeName() +
                         "/history/short/result.json?boardid=" +
                         ticker.getBoardId() +
                         "&secid=" +
@@ -49,29 +56,32 @@ public class TickerDaoImpl implements TickerDao {
                         "&date=" +
                         dateInString;
 
-        JSONObject jsonPrice = null;
-
         try {
 
             JSONArray json = Json.readJsonFromUrl(url);
-            jsonPrice = (JSONObject)json.get(1);
-        } catch (IOException e) {
+            JSONObject jsonPrice = (JSONObject)json.get(1);
 
-            e.printStackTrace();
-            return null;
+            //create new Price from JSON
+            Price price = myBeanFactory.getNewPrice();
+            price.setHigh(jsonPrice.getDouble("HIGH"));
+            price.setOpen(jsonPrice.getDouble("OPEN"));
+            price.setLow(jsonPrice.getDouble("LOW"));
+            price.setLast(jsonPrice.getDouble("WAPRICE"));
+            price.setValue(jsonPrice.getDouble("VALUE"));
+            price.setTicker(ticker);
+            price.setSystime(date);
+
+            sessionFactory.getCurrentSession().saveOrUpdate(price);
+
+
+        } catch (IOException | JSONException e) {
+
+            logger.error("Can't get json for parsing!", e);
+
+        } catch (HibernateException e){
+
+            logger.error("Can't save price to DB!", e);
         }
-
-
-        //create new Price from JSON
-        Price price = myBeanFactory.getNewPrice();
-        price.setHigh(jsonPrice.getDouble("HIGH"));
-        price.setOpen(jsonPrice.getDouble("OPEN"));
-        price.setLow(jsonPrice.getDouble("LOW"));
-        price.setLast(jsonPrice.getDouble("WAPRICE"));
-        price.setValue(jsonPrice.getDouble("VALUE"));
-        price.setSystime(date);
-
-        return price;
     }
 
     @Override
@@ -88,15 +98,13 @@ public class TickerDaoImpl implements TickerDao {
     public Ticker getLastPrice(Ticker ticker) {
 
         List<Price> prices = new ArrayList<>();
-        //todo - fix this request
-        prices.add(
-                (Price) sessionFactory
-                        .getCurrentSession()
-                        .createCriteria(Price.class)
-                        .add(Restrictions.eq("tickerId", ticker.getTickerId()))
-                        .addOrder(Order.desc("datetime"))
-                        .uniqueResult()
-        );
+
+        prices.add((Price) sessionFactory
+                .getCurrentSession()
+                .createCriteria(Price.class)
+                .add(Restrictions.eq("ticker.tickerId", ticker.getTickerId()))
+                .addOrder(Order.desc("systime"))
+                .uniqueResult());
 
         ticker.setPrice(prices);
 

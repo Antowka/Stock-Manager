@@ -61,7 +61,7 @@ ALTER TABLE price ADD FOREIGN KEY (ticker_id) REFERENCES ticker (ticker_id);
 CREATE UNIQUE INDEX unique_price_id ON price (price_id);
 CREATE UNIQUE INDEX unique_role_id ON role (role_id);
 CREATE UNIQUE INDEX unique_role_name ON role (role_name);
-ALTER TABLE ticker ADD FOREIGN KEY (ticker_type) REFERENCES ticker_type (ticker_type_id);
+ALTER TABLE ticker ADD FOREIGN KEY (ticker_type_id) REFERENCES ticker_type (ticker_type_id);
 CREATE UNIQUE INDEX unique_ticker_id ON ticker (ticker_id);
 CREATE UNIQUE INDEX unique_ticker_name ON ticker (ticker_name);
 CREATE UNIQUE INDEX unique_ticker_type_id ON ticker_type (ticker_type_id);
