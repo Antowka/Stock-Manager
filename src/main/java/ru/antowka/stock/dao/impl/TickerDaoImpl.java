@@ -9,14 +9,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.antowka.stock.dao.TickerDao;
 import ru.antowka.stock.model.Price;
 import ru.antowka.stock.model.Ticker;
 import ru.antowka.stock.model.factory.MyBeanFactory;
-import ru.antowka.stock.utils.Json;
+import ru.antowka.stock.utils.JsonUtils;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -58,7 +57,7 @@ public class TickerDaoImpl implements TickerDao {
 
         try {
 
-            JSONArray json = Json.readJsonFromUrl(url);
+            JSONArray json = JsonUtils.readJsonFromUrl(url);
             JSONObject jsonPrice = (JSONObject)json.get(1);
 
             //create new Price from JSON
@@ -76,7 +75,7 @@ public class TickerDaoImpl implements TickerDao {
 
         } catch (IOException | JSONException e) {
 
-            logger.error("Can't get json for parsing!", e);
+            logger.error("Can't get json for parsing! " + dateInString, e);
 
         } catch (HibernateException e){
 
@@ -104,6 +103,7 @@ public class TickerDaoImpl implements TickerDao {
                 .createCriteria(Price.class)
                 .add(Restrictions.eq("ticker.tickerId", ticker.getTickerId()))
                 .addOrder(Order.desc("systime"))
+                .setMaxResults(1)
                 .uniqueResult());
 
         ticker.setPrice(prices);

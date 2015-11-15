@@ -10,7 +10,7 @@ import java.nio.charset.Charset;
 /**
  * Created by Anton Nik on 09.11.15.
  */
-public class Json {
+public class JsonUtils {
 
     /**
      * Parse JSON from URL

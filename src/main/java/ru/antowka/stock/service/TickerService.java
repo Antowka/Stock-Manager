@@ -9,6 +9,7 @@ import ru.antowka.stock.model.Price;
 import ru.antowka.stock.model.Ticker;
 
 
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -55,15 +56,21 @@ public class TickerService {
         //iterate dates range
         for(LocalDateTime startDate = startDateTime; startDate.isBefore(currentDateTime); startDate = startDate.plusDays(1)) {
 
-            tickerDao.parsPricesForTicker(ticker, startDate);
+            //filter weekend days
+            if(startDate.getDayOfWeek() != DayOfWeek.SATURDAY && startDate.getDayOfWeek() != DayOfWeek.SUNDAY){
 
-            try {
+                //save new price
+                tickerDao.parsPricesForTicker(ticker, startDate);
 
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
+                //timeout between request
+                try {
 
-                e.printStackTrace();
-                break;
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+
+                    e.printStackTrace();
+                    break;
+                }
             }
         }
     }
