@@ -4,6 +4,7 @@ package ru.antowka.stock.dao;
 import ru.antowka.stock.model.Price;
 import ru.antowka.stock.model.Ticker;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Created by Anton Nik on 07.11.15.
@@ -43,4 +44,10 @@ public interface TickerDao {
      */
     Ticker getPriceByDates(Ticker ticker, LocalDateTime startDate, LocalDateTime endDate);
 
+    /**
+     * Get all tickers
+     *
+     * @return
+     */
+    List<Ticker> getAllTickets();
 }

@@ -1,11 +1,10 @@
-group 'ru.antowka.stockmng'
-version '1.0-SNAPSHOT'
-
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'war'
 
 sourceCompatibility = 1.8
+
+compileJava.options.encoding = 'UTF-8'
 
 repositories {
     maven {
@@ -39,7 +38,7 @@ dependencies {
     compile 'org.json:json:20150729'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.6.0'
 
-    providedRuntime 'javax.servlet:javax.servlet-api:4.0.0-b01'
+    compile 'javax.servlet:javax.servlet-api:4.0.0-b01'
 
     testCompile 'org.springframework:spring-test:4.2.0.RELEASE'
     testCompile 'org.mockito:mockito-core:1.+'

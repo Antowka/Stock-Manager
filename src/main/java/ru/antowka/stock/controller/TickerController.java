@@ -21,7 +21,7 @@ public class TickerController {
     @SendTo("/response/status")
     public Message login(Ticker ticker) throws Exception {
 
-        tickerService.updateTickerPrices(ticker);
+        //tickerService.updateAllTickers();
 
         return new Message(0, "You are authorized!");
     }

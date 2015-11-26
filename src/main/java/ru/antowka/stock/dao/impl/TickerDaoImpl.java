@@ -75,7 +75,7 @@ public class TickerDaoImpl implements TickerDao {
 
         } catch (IOException | JSONException e) {
 
-            logger.error("Can't get json for parsing! " + dateInString, e);
+            logger.error("Can't get json for parsing! URL: " + url);
 
         } catch (HibernateException e){
 
@@ -116,4 +116,16 @@ public class TickerDaoImpl implements TickerDao {
     public Ticker getPriceByDates(Ticker ticker, LocalDateTime startDate, LocalDateTime endDate) {
         return null;
     }
+
+    @Override
+    @Transactional
+    @SuppressWarnings("unchecked")
+    public List<Ticker> getAllTickets() {
+
+        return (List<Ticker>)sessionFactory.getCurrentSession()
+                    .createCriteria(Ticker.class)
+                    .list();
+    }
+
+
 }

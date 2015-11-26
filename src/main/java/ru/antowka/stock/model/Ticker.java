@@ -18,7 +18,7 @@ public class Ticker implements Serializable {
     @Column(name = "ticker_id")
     private int tickerId;
 
-    @OneToMany(targetEntity=Price.class, mappedBy="ticker", cascade=CascadeType.ALL)
+    @OneToMany(targetEntity=Price.class, mappedBy="ticker", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Price> price;
 
     @ManyToOne

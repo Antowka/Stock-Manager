@@ -1,13 +1,15 @@
 package ru.antowka.stock.service;
 
 import static org.junit.Assert.*;
-import org.junit.Before;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.*;
 import org.mockito.runners.MockitoJUnitRunner;
+import ru.antowka.stock.dao.SettingDao;
 import ru.antowka.stock.dao.TickerDao;
 import ru.antowka.stock.model.Price;
+import ru.antowka.stock.model.Setting;
 import ru.antowka.stock.model.Ticker;
 import ru.antowka.stock.model.TickerType;
 
@@ -30,10 +32,8 @@ public class TickerServiceTest {
     @Mock
     private TickerDao tickerDao;
 
-    @Before
-    public void setupMock() {
-
-    }
+    @Mock
+    private SettingDao settingDao;
 
     @Test
     public void testUpdateTickerPrices() throws Exception {
@@ -50,8 +50,6 @@ public class TickerServiceTest {
         ticker.setTickerName("GAZP");
         ticker.setTickerTypeId(tickerType);
 
-        when(tickerDao.getTickerById(1)).thenReturn(ticker);
-
         Price price = new Price();
         price.setHigh(1.0);
         price.setLast(1.0);
@@ -67,7 +65,7 @@ public class TickerServiceTest {
 
         when(tickerDao.getLastPrice(ticker)).thenReturn(ticker);
 
-        tickerService.updateTickerPrices(ticker);
+        tickerService.updatePricesByTicker(ticker);
 
         ArgumentCaptor<Ticker> tickerCapture = ArgumentCaptor.forClass(Ticker.class);
         ArgumentCaptor<LocalDateTime> dateCapture = ArgumentCaptor.forClass(LocalDateTime.class);
@@ -78,6 +76,28 @@ public class TickerServiceTest {
                 dateCapture.getValue().isAfter(minusTimeNow) &&
                 dateCapture.getValue().getDayOfWeek() != DayOfWeek.SUNDAY &&
                 dateCapture.getValue().getDayOfWeek() != DayOfWeek.SATURDAY
+        );
+    }
+
+    @Test
+    public void testUpdateAllTickers(){
+
+        Setting setting = new Setting();
+        setting.setName("price_updating_now");
+        setting.setValue("0");
+
+        when(settingDao.getSettingByName("price_updating_now")).thenReturn(setting);
+
+        when(tickerDao.getAllTickets()).thenReturn(new ArrayList<Ticker>());
+
+        tickerService.updateAllTickers();
+
+        ArgumentCaptor<Setting> settingCapture = ArgumentCaptor.forClass(Setting.class);
+        verify(settingDao, times(2)).updateSetting(settingCapture.capture());
+
+        //after finish need check on 0 status
+        assertTrue(
+                settingCapture.getValue().getValue().equals("0")
         );
     }
 }
