@@ -21,7 +21,7 @@ import java.util.List;
 import static org.mockito.Mockito.*;
 
 /**
- * Created by anton on 15.11.15.
+ * Created by Anton Nik on 15.11.15.
  */
 @RunWith(MockitoJUnitRunner.class)
 public class TickerServiceTest {
