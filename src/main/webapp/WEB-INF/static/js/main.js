@@ -8,7 +8,13 @@ stompClient.connect({}, function(frame) {
 
     console.log(frame);
 
-    stompClient.subscribe("/response/status", function(message) {
+    stompClient.subscribe("/response/ticker", function(message) {
+        console.log("get response from /response/ticker");
+        console.log(message);
+    });
+
+    stompClient.subscribe("/response/operation", function(message) {
+        console.log("get response from /response/operation");
         console.log(message);
     });
 
@@ -16,5 +22,5 @@ stompClient.connect({}, function(frame) {
         tickerid:1
     };
 
-    stompClient.send("/app/ticker", {}, JSON.stringify(ticker));
+    stompClient.send("/app/ticker/get", {}, JSON.stringify(ticker));
 });

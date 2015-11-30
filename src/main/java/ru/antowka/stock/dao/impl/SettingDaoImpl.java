@@ -3,6 +3,7 @@ package ru.antowka.stock.dao.impl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.antowka.stock.dao.SettingDao;
 import ru.antowka.stock.model.Setting;
 
@@ -16,6 +17,7 @@ public class SettingDaoImpl implements SettingDao {
     private SessionFactory sessionFactory;
 
     @Override
+    @Transactional
     public Setting getSettingByName(String settingName) {
 
        return sessionFactory.getCurrentSession()
@@ -23,6 +25,7 @@ public class SettingDaoImpl implements SettingDao {
     }
 
     @Override
+    @Transactional
     public void updateSetting(Setting setting) {
         sessionFactory.getCurrentSession().update(setting);
     }

@@ -6,24 +6,24 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import ru.antowka.stock.model.Message;
 import ru.antowka.stock.model.Ticker;
-import ru.antowka.stock.service.TickerService;
+import ru.antowka.stock.service.OperationService;
 
 /**
- * Created by Anton Nik on 07.11.15.
+ * Created by Anton Nik on 01.12.15.
  */
 @Controller
-@MessageMapping("/ticker")
-public class TickerController {
+@MessageMapping("/operation")
+public class OperationController {
 
     @Autowired
-    private TickerService tickerService;
+    private OperationService operationService;
 
-    @MessageMapping("/get")
-    @SendTo("/response/ticker")
+    @MessageMapping("add")
+    @SendTo("/response/operation")
     public Message login(Ticker ticker) throws Exception {
 
         //tickerService.updateAllTickers();
 
-        return new Message(0, "You are authorized!");
+        return new Message(0, "You are create new operation!");
     }
 }
