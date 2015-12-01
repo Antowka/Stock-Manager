@@ -32,7 +32,8 @@ public class User {
     )
     private Set<Role> role;
 
-    private Portfolio portfolio;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userId")
+    private Set<Position> positions;
 
     public int getUserId() {
         return userId;
@@ -66,11 +67,11 @@ public class User {
         this.role = role;
     }
 
-    public Portfolio getPortfolio() {
-        return portfolio;
+    public Set<Position> getPositions() {
+        return positions;
     }
 
-    public void setPortfolio(Portfolio portfolio) {
-        this.portfolio = portfolio;
+    public void setPositions(Position position) {
+        this.positions = positions;
     }
 }

@@ -31,7 +31,7 @@ public class UserController {
 
 /*
     @SubscribeMapping("/get-portfolio")
-    public Portfolio getPortfolio(Principal principal) throws Exception {
+    public Position getPosition(Principal principal) throws Exception {
         return null;
     }
 */
