@@ -12,24 +12,24 @@ public class OperationType {
     @Id
     @GeneratedValue
     @Column(name = "operation_type_id")
-    private int tickerTypeId;
+    private int operationTypeId;
 
     @Column(name = "operation_type_name")
-    private String tickerTypeName;
+    private String operationTypeName;
 
-    public String getTickerTypeName() {
-        return tickerTypeName;
+    public String getOperationTypeName() {
+        return operationTypeName;
     }
 
-    public void setTickerTypeName(String tickerTypeName) {
-        this.tickerTypeName = tickerTypeName;
+    public void setOperationTypeName(String operationTypeName) {
+        this.operationTypeName = operationTypeName;
     }
 
-    public int getTickerTypeId() {
-        return tickerTypeId;
+    public int getOperationTypeId() {
+        return operationTypeId;
     }
 
-    public void setTickerTypeId(int tickerTypeId) {
-        this.tickerTypeId = tickerTypeId;
+    public void setOperationTypeId(int operationTypeId) {
+        this.operationTypeId = operationTypeId;
     }
 }

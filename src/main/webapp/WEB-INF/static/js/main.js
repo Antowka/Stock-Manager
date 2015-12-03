@@ -22,5 +22,13 @@ stompClient.connect({}, function(frame) {
         tickerid:1
     };
 
+    var operation = {
+        ticker:{tickerId:1},
+        amount:5,
+        price:100,
+        operationType:{operationTypeId:2}
+    };
+
     stompClient.send("/app/ticker/get", {}, JSON.stringify(ticker));
+    stompClient.send("/app/operation/add", {}, JSON.stringify(ticker));
 });

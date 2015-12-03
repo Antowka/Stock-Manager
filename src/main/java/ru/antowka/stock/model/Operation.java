@@ -29,6 +29,9 @@ public class Operation {
     @JoinColumn(name = "operation_type_id", nullable = false)
     private OperationType operationType;
 
+    @Column(name = "price")
+    private double price;
+
     public int getOperationId() {
         return operationId;
     }
@@ -67,5 +70,13 @@ public class Operation {
 
     public void setOperationType(OperationType operationType) {
         this.operationType = operationType;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

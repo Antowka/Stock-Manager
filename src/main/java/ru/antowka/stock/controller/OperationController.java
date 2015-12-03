@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.ResponseBody;
 import ru.antowka.stock.model.Message;
+import ru.antowka.stock.model.Operation;
 import ru.antowka.stock.model.Ticker;
 import ru.antowka.stock.service.OperationService;
 
@@ -20,9 +23,9 @@ public class OperationController {
 
     @MessageMapping("add")
     @SendTo("/response/operation")
-    public Message login(Ticker ticker) throws Exception {
+    public @ResponseBody Message login(@ModelAttribute Operation operation) throws Exception {
 
-        //tickerService.updateAllTickers();
+        operationService.addOperation(operation);
 
         return new Message(0, "You are create new operation!");
     }

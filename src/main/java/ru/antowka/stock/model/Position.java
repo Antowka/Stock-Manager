@@ -16,7 +16,7 @@ public class Position {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private User userId;
 
     @ManyToOne
     @JoinColumn(name = "ticker_id", nullable = false)
@@ -38,11 +38,11 @@ public class Position {
     }
 
     public User getUser() {
-        return user;
+        return userId;
     }
 
     public void setUser(User user) {
-        this.user = user;
+        this.userId = user;
     }
 
     public Ticker getTicker() {
