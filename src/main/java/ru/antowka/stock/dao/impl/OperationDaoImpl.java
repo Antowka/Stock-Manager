@@ -3,6 +3,7 @@ package ru.antowka.stock.dao.impl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.antowka.stock.dao.OperationDao;
 import ru.antowka.stock.model.Operation;
 
@@ -25,6 +26,7 @@ public class OperationDaoImpl implements OperationDao {
      * @return
      */
     @Override
+    @Transactional
     public Operation addOperation(Operation operation) {
 
         sessionFactory.getCurrentSession()
@@ -34,16 +36,19 @@ public class OperationDaoImpl implements OperationDao {
     }
 
     @Override
+    @Transactional
     public Operation updateOperation(Operation operation) {
         return null;
     }
 
     @Override
+    @Transactional
     public Operation removeOperation(Operation operation) {
         return null;
     }
 
     @Override
+    @Transactional
     public List<Operation> getOperationsByDateRange(LocalDateTime startDate, LocalDateTime endDate) {
         return null;
     }

@@ -18,7 +18,7 @@ public class Role {
     @Column(name = "role_name")
     private String roleName;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "role")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "authorities")
     private Set<User> users;
 
     public int getRoleId() {

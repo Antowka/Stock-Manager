@@ -15,8 +15,8 @@ public class User {
     @Column(name = "user_id")
     private int userId;
 
-    @Column(name = "login")
-    private String login;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -30,7 +30,7 @@ public class User {
             @JoinColumn(name = "role_id", nullable = false, updatable = false)
         }
     )
-    private Set<Role> role;
+    private Set<Role> authorities;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "userId")
     private Set<Position> positions;
@@ -43,12 +43,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -59,12 +59,12 @@ public class User {
         this.password = password;
     }
 
-    public Set<Role> getRole() {
-        return role;
+    public Set<Role> getAuthorities() {
+        return authorities;
     }
 
-    public void setRole(Set<Role> role) {
-        this.role = role;
+    public void setAuthorities(Set<Role> authorities) {
+        this.authorities = authorities;
     }
 
     public Set<Position> getPositions() {

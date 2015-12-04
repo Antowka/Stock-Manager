@@ -30,5 +30,5 @@ stompClient.connect({}, function(frame) {
     };
 
     stompClient.send("/app/ticker/get", {}, JSON.stringify(ticker));
-    stompClient.send("/app/operation/add", {}, JSON.stringify(ticker));
+    stompClient.send("/app/operation/add", {}, JSON.stringify(operation));
 });
