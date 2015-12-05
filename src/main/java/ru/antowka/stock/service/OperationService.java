@@ -16,6 +16,9 @@ public class OperationService {
     @Autowired
     private OperationDao operationDao;
 
+    @Autowired
+    private UserService userService;
+
     /**
      * Added new operation
      *
@@ -23,9 +26,10 @@ public class OperationService {
      * @return
      */
     public Operation addOperation(Operation operation){
-        //todo - set Principal to User
-        //User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        //operation.setUser(user);
+
+        User user = userService.getCurrentUser();
+        operation.setUser(user);
+
         return operationDao.addOperation(operation);
     }
 }

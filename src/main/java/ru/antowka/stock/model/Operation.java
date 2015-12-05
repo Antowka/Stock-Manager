@@ -10,8 +10,8 @@ import javax.persistence.*;
 public class Operation {
 
     @Id
-    @GeneratedValue
-    @Column(name = "operation_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "operation_id", updatable = false, nullable = false)
     private int operationId;
 
     @ManyToOne

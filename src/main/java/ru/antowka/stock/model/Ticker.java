@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Created by Anton Nikanorov on 21.10.15.
@@ -33,6 +34,9 @@ public class Ticker implements Serializable {
 
     @Column(name = "board_id")
     private String boardId;
+
+    @OneToMany(targetEntity=Operation.class, mappedBy="ticker", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Operation> operations;
 
     public TickerType getTickerTypeId() {
         return tickerTypeId;
@@ -82,7 +86,16 @@ public class Ticker implements Serializable {
         this.boardId = boardId;
     }
 
+    public Set<Operation> getOperations() {
+        return operations;
+    }
+
+    public void setOperations(Set<Operation> operations) {
+        this.operations = operations;
+    }
+
     /**
+     * todo - check on use
      * Get last price in current range
      *
      * @return

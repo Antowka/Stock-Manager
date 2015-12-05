@@ -1,5 +1,7 @@
 package ru.antowka.stock.dao.impl;
 
+import org.hibernate.HibernateError;
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -29,8 +31,12 @@ public class OperationDaoImpl implements OperationDao {
     @Transactional
     public Operation addOperation(Operation operation) {
 
-        sessionFactory.getCurrentSession()
-                        .saveOrUpdate(operation);
+        try {
+            sessionFactory.getCurrentSession()
+                    .saveOrUpdate(operation);
+        }catch(HibernateException e){
+            e.getStackTrace();
+        }
 
         return operation;
     }

@@ -32,7 +32,7 @@ public class User {
     )
     private Set<Role> authorities;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userId")
+    @OneToMany(mappedBy = "userId")
     private Set<Position> positions;
 
     public int getUserId() {
