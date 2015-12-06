@@ -23,10 +23,8 @@ public class OperationController {
 
     @MessageMapping("add")
     @SendTo("/response/operation")
-    public @ResponseBody Message login(@ModelAttribute Operation operation) throws Exception {
+    public @ResponseBody Operation addOperation(@ModelAttribute Operation operation) throws Exception {
 
-        operationService.addOperation(operation);
-
-        return new Message(0, "You are create new operation!");
+         return operationService.addOperation(operation);
     }
 }

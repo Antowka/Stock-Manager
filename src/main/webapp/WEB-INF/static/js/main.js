@@ -23,7 +23,7 @@ stompClient.connect({}, function(frame) {
     };
 
     var operation = {
-        ticker:{tickerId:1},
+        ticker:{tickerId:2},
         amount:5,
         price:100,
         operationType:{operationTypeId:2}

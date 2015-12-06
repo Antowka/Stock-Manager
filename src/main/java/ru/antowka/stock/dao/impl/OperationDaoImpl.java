@@ -32,9 +32,13 @@ public class OperationDaoImpl implements OperationDao {
     public Operation addOperation(Operation operation) {
 
         try {
-            sessionFactory.getCurrentSession()
+
+            sessionFactory
+                    .getCurrentSession()
                     .saveOrUpdate(operation);
+
         }catch(HibernateException e){
+
             e.getStackTrace();
         }
 
