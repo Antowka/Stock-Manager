@@ -1,5 +1,7 @@
 package ru.antowka.stock.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -14,7 +16,8 @@ public class Operation {
     @Column(name = "operation_id", updatable = false, nullable = false)
     private int operationId;
 
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 

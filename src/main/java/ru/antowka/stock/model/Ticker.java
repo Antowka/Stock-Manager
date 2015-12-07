@@ -1,6 +1,8 @@
 package ru.antowka.stock.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -19,6 +21,7 @@ public class Ticker implements Serializable {
     @Column(name = "ticker_id")
     private int tickerId;
 
+    @JsonIgnore
     @OneToMany(targetEntity=Price.class, mappedBy="ticker", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Price> price;
 
@@ -35,6 +38,7 @@ public class Ticker implements Serializable {
     @Column(name = "board_id")
     private String boardId;
 
+    @JsonIgnore
     @OneToMany(targetEntity=Operation.class, mappedBy="ticker", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Operation> operations;
 
@@ -92,16 +96,5 @@ public class Ticker implements Serializable {
 
     public void setOperations(Set<Operation> operations) {
         this.operations = operations;
-    }
-
-    /**
-     * todo - check on use
-     * Get last price in current range
-     *
-     * @return
-     */
-    public Price getLastTick(){
-        Optional<Price> priceLast = price.stream().reduce((priceA, priceZ) -> priceZ);
-        return priceLast.get();
     }
 }

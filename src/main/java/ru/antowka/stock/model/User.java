@@ -1,5 +1,7 @@
 package ru.antowka.stock.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -21,6 +23,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_role",
         joinColumns = {
@@ -32,6 +35,7 @@ public class User {
     )
     private Set<Role> authorities;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "userId")
     private Set<Position> positions;
 
