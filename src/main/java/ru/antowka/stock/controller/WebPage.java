@@ -22,14 +22,29 @@ public class WebPage {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public String indexPage() {
+    public String indexPage(ModelMap model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        return !(auth instanceof AnonymousAuthenticationToken)?"redirect:/portfolio":"index";
+
+        String pageName = "index";
+
+        if(!(auth instanceof AnonymousAuthenticationToken)){
+            pageName = "redirect:/portfolio";
+        }
+
+        //set template vars
+        model.addAttribute("page", pageName);
+
+        return pageName;
     }
 
     @RequestMapping(value = "portfolio", method = RequestMethod.GET)
     public String portfolioPage(ModelMap model) {
-        model.addAttribute("message", "Portfolio Page");
-        return "portfolio";
+
+        String pageName = "portfolio";
+
+        //set template vars
+        model.addAttribute("page", pageName);
+
+        return pageName;
     }
 }
