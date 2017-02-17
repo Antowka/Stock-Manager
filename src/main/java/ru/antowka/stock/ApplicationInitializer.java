@@ -1,30 +1,30 @@
 package ru.antowka.stock;
 
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import ru.antowka.stock.infrastructure.spring.config.WebConfig;
-
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * Created by Anton Nik on 31.10.15.
+ * Initialize application
  */
-public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+@Configuration
+@EnableAsync
+@EnableAutoConfiguration
+@EnableConfigurationProperties
+@ComponentScan("ru.antowka.stock")
+@EnableTransactionManagement
+@EnableJpaRepositories(basePackages = "ru.antowka.stock.infrastructure.spring.repository")
+@SpringBootApplication
+public class ApplicationInitializer {
 
-    @Override
-    protected Class<?>[] getRootConfigClasses() {
-        return new Class[] {
-            WebConfig.class
-        };
-    }
-
-    @Override
-    protected Class<?>[] getServletConfigClasses() {
-        return new Class[] {
-            WebConfig.class
-        };
-    }
-
-    @Override
-    protected String[] getServletMappings() {
-        return new String[] { "/" };
+    public static void main(String[] args) {
+        SpringApplication.run(ApplicationInitializer.class, args);
     }
 }

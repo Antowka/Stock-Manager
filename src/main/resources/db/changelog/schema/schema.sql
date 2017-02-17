@@ -1,3 +1,7 @@
+CREATE SEQUENCE tickers_id_seq START 1;
+CREATE SEQUENCE transaction_types_id_seq START 1;
+CREATE SEQUENCE transactions_id_seq START 1;
+
 CREATE TABLE tickers
 (
   id INTEGER DEFAULT nextval('tickers_id_seq'::regclass) PRIMARY KEY NOT NULL,
