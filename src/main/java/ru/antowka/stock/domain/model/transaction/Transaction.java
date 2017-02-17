@@ -18,15 +18,17 @@ public class Transaction {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private TransactionType type;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Ticker ticker;
 
     private Float price;
 
     private Integer amount;
+
+    private String comment;
 
     private Date date;
 }

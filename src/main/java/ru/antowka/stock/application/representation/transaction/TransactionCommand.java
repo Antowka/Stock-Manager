@@ -17,5 +17,6 @@ public class TransactionCommand {
     private String ticker;
     private Float price;
     private Integer amount;
-    private Date date;
+    private String comment;
+    private String date;
 }

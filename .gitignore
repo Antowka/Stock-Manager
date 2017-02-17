@@ -1,3 +1,4 @@
 target/*
 .idea/*
 *.iml
+frontend/ng2-admin/node_modules

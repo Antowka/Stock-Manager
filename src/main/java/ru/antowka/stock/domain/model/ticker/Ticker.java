@@ -18,7 +18,7 @@ public class Ticker {
 
     private String name;
 
-    private String shotDescription;
+    private String shortDescription;
 
     private String fullDescription;
 

@@ -9,5 +9,5 @@ import ru.antowka.stock.domain.model.ticker.Ticker;
  * JPA repository for tickers
  */
 public interface TickerRepository extends JpaRepository<Ticker, Long> {
-    Ticker findOneByName(String name);
+    Ticker findByName(String name);
 }

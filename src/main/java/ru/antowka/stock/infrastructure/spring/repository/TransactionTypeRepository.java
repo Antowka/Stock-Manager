@@ -9,5 +9,5 @@ import ru.antowka.stock.domain.model.transaction.TransactionType;
  */
 public interface TransactionTypeRepository extends JpaRepository<TransactionType, Long> {
 
-    TransactionType findOneByName(String name);
+    TransactionType findByName(String name);
 }
