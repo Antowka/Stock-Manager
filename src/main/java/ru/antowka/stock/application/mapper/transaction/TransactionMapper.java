@@ -3,7 +3,6 @@ package ru.antowka.stock.application.mapper.transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.antowka.stock.application.mapper.Mapper;
-import ru.antowka.stock.application.representation.transaction.TransactionCommand;
 import ru.antowka.stock.application.representation.transaction.TransactionRepresentation;
 import ru.antowka.stock.domain.model.transaction.Transaction;
 import ru.antowka.stock.infrastructure.spring.repository.TickerRepository;
@@ -14,7 +13,7 @@ import ru.antowka.stock.infrastructure.utils.DateUtils;
  * Mapper for transaction VIEW
  */
 @Component
-public class TransactionMapper implements Mapper<Transaction, TransactionRepresentation, TransactionCommand> {
+public class TransactionMapper implements Mapper<Transaction, TransactionRepresentation> {
 
     private TickerRepository tickerRepository;
 
@@ -32,7 +31,7 @@ public class TransactionMapper implements Mapper<Transaction, TransactionReprese
         TransactionRepresentation representation = new TransactionRepresentation();
         representation.setId(entity.getId());
         representation.setAmount(entity.getAmount());
-        representation.setDate(DateUtils.dateToString(entity.getDate()));
+        representation.setDate(entity.getDate());
         representation.setPrice(entity.getPrice());
         representation.setComment(entity.getComment());
         representation.setTicker(entity.getTicker().getName());
@@ -42,14 +41,14 @@ public class TransactionMapper implements Mapper<Transaction, TransactionReprese
     }
 
     @Override
-    public Transaction toEntity(TransactionCommand command) {
+    public Transaction toEntity(TransactionRepresentation command) {
 
         Transaction transaction = new Transaction();
         transaction.setId(command.getId());
         transaction.setAmount(command.getAmount());
 
         if (command.getDate() != null) {
-            transaction.setDate(DateUtils.stringToDate(command.getDate()));
+            transaction.setDate(command.getDate());
         }
 
         transaction.setPrice(command.getPrice());

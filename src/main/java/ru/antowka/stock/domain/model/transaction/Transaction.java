@@ -18,10 +18,10 @@ public class Transaction {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private TransactionType type;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Ticker ticker;
 
     private Float price;
