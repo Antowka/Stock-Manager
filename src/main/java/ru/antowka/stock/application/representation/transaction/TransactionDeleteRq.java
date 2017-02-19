@@ -9,5 +9,5 @@ import java.util.List;
  */
 @Data
 public class TransactionDeleteRq {
-    List<TransactionCommand> transactions;
+    List<TransactionRepresentation> transactions;
 }

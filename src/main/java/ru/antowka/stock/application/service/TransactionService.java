@@ -5,10 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.antowka.stock.application.representation.StatusAction;
 import ru.antowka.stock.domain.model.transaction.Transaction;
+import ru.antowka.stock.domain.model.transaction.TransactionType;
 import ru.antowka.stock.infrastructure.spring.repository.TransactionRepository;
+import ru.antowka.stock.infrastructure.spring.repository.TransactionTypeRepository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -20,15 +20,47 @@ public class TransactionService {
 
 
     private TransactionRepository transactionRepository;
+    private TransactionTypeRepository transactionTypeRepository;
 
     private final static Logger logger = Logger.getLogger(TransactionService.class);
-
-    @PersistenceContext
-    private EntityManager em;
 
     @Autowired
     public TransactionService(TransactionRepository transactionRepository) {
         this.transactionRepository = transactionRepository;
+    }
+
+    @Autowired
+    public void setTransactionTypeRepository(TransactionTypeRepository transactionTypeRepository) {
+        this.transactionTypeRepository = transactionTypeRepository;
+    }
+
+    /**
+     * Get transaction by id
+     *
+     * @param id
+     * @return
+     */
+    public Transaction getById(Long id) {
+        return transactionRepository.findOne(id);
+    }
+
+    /**
+     * Return list with transactions
+     *
+     * @return
+     */
+    public List<Transaction> getAllTransaction() {
+        return transactionRepository.findAll();
+    }
+
+    /**
+     * Filter tickers by ticker name
+     *
+     * @param tickerName
+     * @return
+     */
+    public List<Transaction> getByTickerName(String tickerName) {
+        return transactionRepository.findByTickerNameStartingWith(tickerName.toUpperCase());
     }
 
     /**
@@ -39,6 +71,17 @@ public class TransactionService {
      */
     @Transactional
     public Transaction create(Transaction transaction) {
+        return transactionRepository.save(transaction);
+    }
+
+    /**
+     * For update transaction
+     *
+     * @param transaction
+     * @return
+     */
+    @Transactional
+    public Transaction update(Transaction transaction) {
         return transactionRepository.save(transaction);
     }
 
@@ -67,5 +110,14 @@ public class TransactionService {
         statusAction.setMessage("Transaction remove is " + (isRemoved?"success":"fail"));
 
         return statusAction;
+    }
+
+    /**
+     * Response transaction type list
+     *
+     * @return
+     */
+    public List<TransactionType> getTransactionTypesList() {
+        return transactionTypeRepository.findAll();
     }
 }

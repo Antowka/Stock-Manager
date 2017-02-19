@@ -1,11 +1,13 @@
 package ru.antowka.stock.application.representation.transaction;
 
 import lombok.Data;
+import ru.antowka.stock.domain.model.ticker.Ticker;
+import ru.antowka.stock.domain.model.transaction.TransactionType;
 
 import java.util.Date;
 
 /**
- * View for representation
+ * View for command
  */
 @Data
 public class TransactionRepresentation {
@@ -16,5 +18,5 @@ public class TransactionRepresentation {
     private Float price;
     private Integer amount;
     private String comment;
-    private String date;
+    private Date date;
 }
