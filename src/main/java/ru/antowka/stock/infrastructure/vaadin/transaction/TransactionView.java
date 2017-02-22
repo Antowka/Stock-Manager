@@ -1,58 +1,61 @@
 package ru.antowka.stock.infrastructure.vaadin.transaction;
 
-import com.vaadin.annotations.Theme;
 import com.vaadin.data.util.BeanItemContainer;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.FontAwesome;
-import com.vaadin.server.VaadinRequest;
-import com.vaadin.spring.annotation.SpringUI;
+import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import ru.antowka.stock.application.mapper.transaction.TransactionMapper;
 import ru.antowka.stock.application.representation.transaction.TransactionRepresentation;
 import ru.antowka.stock.application.service.TransactionService;
-import ru.antowka.stock.infrastructure.vaadin.transaction.component.TransactionEditorComponent;
 
+import javax.annotation.PostConstruct;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by anton on 19.02.17.
+ * Portfolio view
  */
-@SpringUI
-@Theme("valo")
-public class TransactionGridUI extends UI {
+@SpringView(name = TransactionView.VIEW_NAME)
+public class TransactionView extends VerticalLayout implements View {
 
-    private Grid grid;
+    public static final String VIEW_NAME = "transaction";
+
+    private Grid grid = new Grid();
     private TransactionService transactionService;
     private TransactionMapper transactionMapper;
     private TransactionEditorComponent transactionEditor;
-    private final TextField filterByTicker;
-    private final Button addNewBtn;
+    private final TextField filterByTicker = new TextField();
+    private final Button addNewBtn = new Button("Add transaction", FontAwesome.PLUS);;
+
 
     @Autowired
-    public TransactionGridUI(
-            TransactionService transactionService,
-            TransactionEditorComponent transactionEditor,
-            TransactionMapper transactionMapper) {
-
-        this.grid = new Grid();
-        this.transactionMapper = transactionMapper;
+    public void setTransactionService(TransactionService transactionService) {
         this.transactionService = transactionService;
-        this.transactionEditor = transactionEditor;
-        this.filterByTicker = new TextField();
-        this.addNewBtn = new Button("Add transaction", FontAwesome.PLUS);
     }
 
-    @Override
-    protected void init(VaadinRequest vaadinRequest) {
+    @Autowired
+    public void setTransactionMapper(TransactionMapper transactionMapper) {
+        this.transactionMapper = transactionMapper;
+    }
+
+    @Autowired
+    public void setTransactionEditor(TransactionEditorComponent transactionEditor) {
+        this.transactionEditor = transactionEditor;
+    }
+
+    @PostConstruct
+    void init() {
 
         // build layout
         HorizontalLayout actions = new HorizontalLayout(filterByTicker, addNewBtn);
         HorizontalLayout gridAndEditor = new HorizontalLayout(grid, transactionEditor);
         VerticalLayout mainLayout = new VerticalLayout(actions, gridAndEditor);
-        setContent(mainLayout);
+        addComponent(mainLayout);
 
         // Configure layouts and components
         actions.setSpacing(true);
@@ -99,6 +102,11 @@ public class TransactionGridUI extends UI {
 
         // Initialize listing
         transactionsList(null);
+    }
+
+    @Override
+    public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
+
     }
 
     @SuppressWarnings("unchecked")
