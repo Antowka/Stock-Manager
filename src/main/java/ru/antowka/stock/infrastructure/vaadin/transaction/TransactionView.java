@@ -11,6 +11,7 @@ import org.springframework.util.StringUtils;
 import ru.antowka.stock.application.mapper.transaction.TransactionMapper;
 import ru.antowka.stock.application.representation.transaction.TransactionRepresentation;
 import ru.antowka.stock.application.service.TransactionService;
+import ru.antowka.stock.infrastructure.vaadin.transaction.component.TransactionEditorComponent;
 
 import javax.annotation.PostConstruct;
 import java.util.Date;

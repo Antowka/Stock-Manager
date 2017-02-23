@@ -17,7 +17,7 @@ import javax.annotation.PostConstruct;
 
 
 /**
- * Start view
+ * Main VIEW
  */
 @SpringView(name = DashboardView.VIEW_NAME)
 public class DashboardView extends VerticalLayout implements View {

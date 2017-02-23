@@ -9,7 +9,7 @@ import com.vaadin.ui.UI;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Created by anton on 19.02.17.
+ * Start UI
  */
 @SpringUI
 @Theme("valo")

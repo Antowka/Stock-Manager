@@ -1,8 +1,10 @@
 package ru.antowka.stock.domain.model.ticker;
 
 import lombok.Data;
+import ru.antowka.stock.domain.model.price.Price;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Stock's tickers
@@ -23,4 +25,9 @@ public class Ticker {
     private String fullDescription;
 
     private String isin;
+
+    private String boardId;
+
+    @OneToMany
+    private List<Price> prices;
 }
