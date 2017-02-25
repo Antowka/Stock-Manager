@@ -1,0 +1,9 @@
+INSERT INTO public.transactions (id, type_id, date, comment, ticker_id, price, amount) VALUES (1, 1, '2017-01-18 18:25:38.244000', '', 1123, 0.4560000002384186, 10000);
+INSERT INTO public.transactions (id, type_id, date, comment, ticker_id, price, amount) VALUES (2, 1, '2017-01-18 18:26:53.017000', '', 1123, 0.4569999873638153, 10000);
+INSERT INTO public.transactions (id, type_id, date, comment, ticker_id, price, amount) VALUES (4, 1, '2017-01-18 18:34:28.506000', '', 192, 35.900001525878906, 300);
+INSERT INTO public.transactions (id, type_id, date, comment, ticker_id, price, amount) VALUES (3, 1, '2017-01-18 18:33:11.883000', '', 1500, 31.3799991607666, 300);
+INSERT INTO public.transactions (id, type_id, date, comment, ticker_id, price, amount) VALUES (5, 1, '2017-01-18 18:35:19.498000', '', 195, 267.79998779296875, 70);
+INSERT INTO public.transactions (id, type_id, date, comment, ticker_id, price, amount) VALUES (6, 1, '2017-01-18 18:36:14.021000', '', 1220, 167.1999969482422, 10);
+INSERT INTO public.transactions (id, type_id, date, comment, ticker_id, price, amount) VALUES (7, 1, '2017-01-26 18:37:01.998000', '', 996, 33.70500183105469, 400);
+INSERT INTO public.transactions (id, type_id, date, comment, ticker_id, price, amount) VALUES (8, 1, '2017-01-26 18:37:57.900000', '', 266, 9793, 1);
+INSERT INTO public.transactions (id, type_id, date, comment, ticker_id, price, amount) VALUES (9, 1, '2017-02-25 18:38:23.317000', '', 195, 271.6000061035156, 10);

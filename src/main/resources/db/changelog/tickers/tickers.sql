@@ -179,6 +179,7 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (172, 'CHMK', 'ЧМК" ПАО ао;ЧМК ао;RU0007665170;1-01-00080-A;3161965;1,00;SUR;2008-12-12;CMK;common_share;Акция обыкновенная
 CHOG;Открытое акционерное общество по газификации и эксплуатации газового хозяйства "Читаоблгаз', 'ОАО "Читаоблгаз"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (174, 'CHSK', 'Открытое акционерное общество  "Чрезвычайная страховая компания"', 'ОАО "ЧСК"', '');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (380, 'KFAR', 'Открытое акционерное общество "Красфарма"', 'ОАО "Красфарма"', 'RU0007940912');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (175, 'CHVP', 'Открытое акционерное общество Государственная страховая компания "Поддержка"', 'ОАО ГСК "Поддержка"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (176, 'CHZB', 'Закрытое акционерное общество "Челябинский завод железобетонных изделий № 1"', 'ЗАО "ЧелЖБИ-1"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (177, 'CHZN', 'Челябинский цинк. завод ао', 'ЧЦЗ ао', 'RU0009093918');
@@ -312,6 +313,7 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (291, 'GZCE', 'Открытое акционерное общество "Горнозаводскцемент"', 'ОАО "Горнозаводскцемент"', 'RU0006752631');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (292, 'GZES', 'Открытое акционерное общество "Газэнергосервис"', 'ОАО "Газэнергосервис"', 'RU000A0JP3D9');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (293, 'GZNP', 'Aкционерное общество "Газпромнефть - Московский НПЗ"', 'АО "Газпромнефть - МНПЗ"', 'RU0009084404');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (463, 'KUNF', 'Каменск-Уральский завод ОАО ао', 'КУЗОЦМ ао', 'RU000A0JPGE2');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (294, 'GZPR', 'Газпромбанк" (Акционерное общество);Банк ГПБ (АО);RU000A0JUEY5;10200354B;490645540;50,00;RUB;;"Gazprombank" (Joint - stock Company);common_share;Акция обыкновенная
 GZTM;Открытое акционерное общество "Газета Метро', 'ОАО "Газета Метро"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (295, 'HALS', 'ПАО "Галс-Девелопмент"', 'Галс-Девел', 'RU000A0JNP96');
@@ -403,7 +405,7 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (377, 'KESK', 'Открытое акционерное общество "Коми энергосбытовая компания"', 'ОАО "Коми энергосбытовая компания"', 'RU000A0JNXK9');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (378, 'KESKP', 'Открытое акционерное общество "Коми энергосбытовая компания"', 'ОАО "Коми энергосбытовая компания"', 'RU000A0JNXL7');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (379, 'KETZ', 'Акционерное общество "Кадошкинский электротехнический завод"', 'АО "КЭТЗ"', 'RU000A0JRQ91');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (380, 'KFAR', 'Открытое акционерное общество "Красфарма"', 'ОАО "Красфарма"', 'RU0007940912');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (802, 'RBCI-004D', 'РБК Информ. системы ао -004D', 'РБК ИС4-ао', 'RU0005707834');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (381, 'KGAS', 'Открытое акционерное общество "Краснодаркрайгаз"', 'ОАО "Краснодаркрайгаз"', 'RU0006218823');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (382, 'KGAZ', 'Акционерное общество "Газпром газораспределение Сыктывкар"', 'АО "Газпром газораспределение Сыктывкар"', 'RU000A0JPA67');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (383, 'KGAZP', 'Акционерное общество "Газпром газораспределение Сыктывкар"', 'АО "Газпром газораспределение Сыктывкар"', 'RU000A0JPA75');
@@ -492,7 +494,6 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (461, 'KUBE', 'Кубаньэнерго" ПАО;Кубанэнр;RU0009046767;1-02-00063-A;282868130;100,00;SUR;2003-09-30;KubanEnrg;common_share;Акция обыкновенная
 KUBM;Открытое акционерное общество по переработке молока "Кубарус-Молоко', 'ОАО "Кубарус-молоко"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (462, 'KUCH', 'Открытое акционерное общество "Кучуксульфат"', 'ОАО "Кучуксульфат"', '');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (463, 'KUNF', 'Каменск-Уральский завод ОАО ао', 'КУЗОЦМ ао', 'RU000A0JPGE2');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (464, 'KUNP', 'Публичное акционерное общество "НК "Роснефть" - Кубаньнефтепродукт"', 'ПАО "НК "Роснефть" - Кубаньнефтепродукт"', 'RU000A0BK433');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (465, 'KUNPP', 'Публичное акционерное общество "НК "Роснефть" - Кубаньнефтепродукт"', 'ПАО "НК "Роснефть" - Кубаньнефтепродукт"', 'RU000A0BK441');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (466, 'KUOG', 'Открытое акционерное общество "Курганоблгаз"', 'ОАО "Курганоблгаз"', 'RU000A0JQDC1');
@@ -536,6 +537,7 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (502, 'LHMP', 'Публичное акционерное общество Продовольственная компания "ЛИМАК"', 'ПАО "ЛИМАК"', 'RU000A0JRZ82');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (503, 'LIFE', 'Фармсинтез ПАО ао', 'iФармсинтз', 'RU000A0JR514');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (504, 'LIKS', 'Акционерное общество "Лизинговая компания "Ликострой"', 'АО "ЛК "Ликострой"', 'RU000A0JQ086');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (803, 'RBCM', 'РБК ПАО ао', 'РБК ао', 'RU000A0JR6A6');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (505, 'LIKZ', 'Открытое акционерное общество "ЛИАНОЗОВСКИЙ КОЛБАСНЫЙ ЗАВОД"', 'ОАО "Лианозовский колбасный завод"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (506, 'LJAZ', 'Открытое акционерное общество "Лужский абразивный завод"', 'ОАО "ЛАЗ"', 'RU000A0JJ792');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (507, 'LKOH', 'НК ЛУКОЙЛ (ПАО) - ао', 'ЛУКОЙЛ', 'RU0009024277');
@@ -583,6 +585,7 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (544, 'MFGS', 'ао "Славнефть-Мегионнефтегаз"', 'Мегион-ао', 'RU0009011126');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (545, 'MFGSP', 'ап Мегионнефтегаз', 'Мегион-ап', 'RU0009011134');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (546, 'MFON', 'МегаФон ПАО ао', 'МегаФон ао', 'RU000A0JS942');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (618, 'MYNTP', 'Публичное акционерное общество "НК "Роснефть" - Мурманскнефтепродукт"', 'ПАО "НК "Роснефть" - Мурманскнефтепродукт"', 'RU000A0F5HP5');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (547, 'MGNT', 'Магнит" ПАО ао;Магнит ао;RU000A0JKQU8;1-01-60525-P;94561355;0,01;SUR;2006-04-24;Magnit;common_share;Акция обыкновенная
 MGNZ;Соликамский магн.завод(ОАО)ао;СМЗ-ао;RU0009100911;1-01-00283-A;398272;0,25;SUR;2008-10-14;SMZ;common_share;Акция обыкновенная
 MGOK;Публичное акционерное общество "Михайловский ГОК', 'ПАО "Михайловский ГОК"', 'RU0005513869');
@@ -622,6 +625,12 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (579, 'MPSM', 'Открытое акционерное общество "Моспромстройматериалы"', 'ОАО "МПСМ"', 'RU000A0B66X7');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (580, 'MPSMP', 'Открытое акционерное общество "Моспромстройматериалы"', 'ОАО "МПСМ"', 'RU000A0B66Y5');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (581, 'MRIK', 'Открытое акционерное общество "Донская инвестиционная компания"', 'ОАО "ДИК"', 'RU000A0JQQ43');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (619, 'MZBK', 'Публичное акционерное общество по производству мостовых железобетонных конструкций "Мостожелезобетонконструкция"', 'ПАО "Мостожелезобетонконструкция" (ПАО "МЖБК")', 'RU000A0JPTF2');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (620, 'MZBKP', 'Публичное акционерное общество по производству мостовых железобетонных конструкций "Мостожелезобетонконструкция"', 'ПАО "Мостожелезобетонконструкция" (ПАО "МЖБК")', 'RU000A0JPTG0');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (621, 'MZDR', 'Акционерное общество "Междуречье"', 'АО "Междуречье"', 'RU000A0JR9T0');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (622, 'MZEP', 'Акционерное общество "Московский завод электроизмерительных приборов"', 'АО "МЗЭП"', '');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (623, 'MZIK', 'Публичное акционерное общество "Машиностроительный завод имени М.И.Калинина', ' г.Екатеринбург"', 'ПАО "МЗИК"');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (710, 'ONPS', 'Открытое акционерное общество "Омскнефтепроводстрой"', 'ОАО "ОНПС"', 'RU000A0JRYE1');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (582, 'MRKC', 'МРСК Центра" ПАО ао;МРСК Центр;RU000A0JPPL8;1-01-10214-A;42217941468;0,1000;SUR;2008-05-21;MRSK Centra;common_share;Акция обыкновенная
 MRKK;МРСК Сев. Кавказа ао;МРСК СК;RU000A0JPPQ7;1-01-34747-E;154562275;1,0000;SUR;2008-06-19;MRSK Severnogo Kavkaza ao;common_share;Акция обыкновенная
 MRKP;МРСК Центр. и Приволж. ао;МРСК ЦП;RU000A0JPN96;1-01-12665-E;112697817043;0,1000;SUR;2008-04-07;MRSK CiP;common_share;Акция обыкновенная
@@ -669,12 +678,6 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 MVZM;Акционерное общество "Московский вертолетный завод им. М.Л. Миля', 'АО "МВЗ им. М.Л. Миля"', 'RU0006758992');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (616, 'MVZMP', 'Акционерное общество "Московский вертолетный завод им. М.Л. Миля"', 'АО "МВЗ им. М.Л. Миля"', 'RU0006758984');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (617, 'MYNT', 'Публичное акционерное общество "НК "Роснефть" - Мурманскнефтепродукт"', 'ПАО "НК "Роснефть" - Мурманскнефтепродукт"', 'RU000A0F5HN0');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (618, 'MYNTP', 'Публичное акционерное общество "НК "Роснефть" - Мурманскнефтепродукт"', 'ПАО "НК "Роснефть" - Мурманскнефтепродукт"', 'RU000A0F5HP5');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (619, 'MZBK', 'Публичное акционерное общество по производству мостовых железобетонных конструкций "Мостожелезобетонконструкция"', 'ПАО "Мостожелезобетонконструкция" (ПАО "МЖБК")', 'RU000A0JPTF2');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (620, 'MZBKP', 'Публичное акционерное общество по производству мостовых железобетонных конструкций "Мостожелезобетонконструкция"', 'ПАО "Мостожелезобетонконструкция" (ПАО "МЖБК")', 'RU000A0JPTG0');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (621, 'MZDR', 'Акционерное общество "Междуречье"', 'АО "Междуречье"', 'RU000A0JR9T0');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (622, 'MZEP', 'Акционерное общество "Московский завод электроизмерительных приборов"', 'АО "МЗЭП"', '');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (623, 'MZIK', 'Публичное акционерное общество "Машиностроительный завод имени М.И.Калинина', ' г.Екатеринбург"', 'ПАО "МЗИК"');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (624, 'MZIKP', 'Публичное акционерное общество "Машиностроительный завод имени М.И.Калинина', ' г.Екатеринбург"', 'ПАО "МЗИК"');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (625, 'MZSM', 'Открытое акционерное общество "Московский завод счетно-аналитических машин имени В.Д.Калмыкова"', 'ОАО "МЗ САМ им. В.Д. Калмыкова"', 'RU000A0DPC79');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (626, 'MZSMP', 'Открытое акционерное общество "Московский завод счетно-аналитических машин имени В.Д.Калмыкова"', 'ОАО "МЗ САМ им. В.Д. Калмыкова"', 'RU000A0DPC95');
@@ -717,6 +720,7 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (658, 'NRBM', 'Акционерный коммерческий банк "Национальный Резервный Банк" (акционерное общество)', 'АКБ "НРБанк" (АО)', 'RU000A0JRA32');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (659, 'NRGP', 'Акционерное общество "Норильскгазпром"', 'АО "Норильскгазпром"', 'RU0008110499');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (660, 'NRGY', 'Открытое акционерное общество "Раменский Электротехнический Завод Энергия"', 'ОАО "РЭТЗ ЭНЕРГИЯ"', 'RU000A0JP716');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (709, 'OMZZP', 'ап"Объединён.  маш. заводы"', 'ОМЗ-ап', 'RU0009090559');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (661, 'NSGR', 'Страховое открытое акционерное общество "Национальная Страховая Группа"', 'СОАО "НСГ"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (662, 'NSNG', 'Акционерное общество "Новосибирскнефтегаз"', 'АО "ННГ"', 'RU0008110465');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (663, 'NSRZ', 'Акционерное общество "Новороссийский судоремонтный завод"', 'АО "НСРЗ"', 'RU0008058425');
@@ -767,8 +771,6 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (707, 'OMSH', 'Омскшина"  (ПАО);Омскшина;RU0009091268;1-01-00111-A;1010724;1,00;SUR;2010-03-09;Omskshina ao;common_share;Акция обыкновенная
 OMSV;Открытое акционерное общество по производству мягких кровельных материалов "Омсккровля', 'ОАО "Омсккровля"', 'RU000A0JRMF3');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (708, 'OMZZ', 'ао"Объединён. маш. заводы"', 'ОМЗ-ао', 'RU0009090542');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (709, 'OMZZP', 'ап"Объединён.  маш. заводы"', 'ОМЗ-ап', 'RU0009090559');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (710, 'ONPS', 'Открытое акционерное общество "Омскнефтепроводстрой"', 'ОАО "ОНПС"', 'RU000A0JRYE1');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (711, 'OPBK', 'Открытое акционерное общество "Объединенный авиаприборостроительный консорциум"', 'ОАО "ОК"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (712, 'OPIN', 'ОПИН ПАО ао', 'ОПИН ао', 'RU000A0DJ9B4');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (713, 'OPRO', 'Открытое акционерное общество "Оптовый продовольственный рынок"Отрадное"', 'ОАО "ОПР"Отрадное"', '');
@@ -816,6 +818,8 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (752, 'PLZL', 'Полюс ПАО ао', 'Полюс', 'RU000A0JNAA8');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (753, 'PMGR', 'Публичное акционерное общество "Премиум Медиа Групп"', 'ПАО "ПМГ"', 'RU000A0JVA93');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (754, 'PMOZ', 'Акционерное общество "ОДК-Пермские моторы"', 'АО "ОДК-ПМ"', 'RU000A0JQKZ7');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (799, 'RARZ', 'Открытое акционерное общество "Ракитянский Арматурный Завод"', 'ОАО "РАКИТЯНСКИЙ АРМАТУРНЫЙ ЗАВОД"', '');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (800, 'RASP', 'ПАО Распадская ао', 'Распадская', 'RU000A0B90N8');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (755, 'PMSB', 'Пермэнергосбыт" ПАО ао;ПермьЭнСб;RU000A0ET123;1-01-55084-E;36210960;3,250;SUR;2006-02-09;Perm'' EnergoSbyt;common_share;Акция обыкновенная
 PMSBP;"Пермэнергосбыт" ПАО ап;ПермьЭнС-п;RU000A0ET156;2-01-55084-E;11353500;3,250;SUR;2006-02-09;Perm'' EnergoSbyt (pref);preferred_share;Акция привилегированная 
 PMZV;Акционерное общество "Павловский машиностроительный завод "Восход', 'АО "ПМЗ "Восход"', 'RU0005298982');
@@ -862,11 +866,7 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (796, 'PZKM', 'Открытое акционерное общество "Пензенский завод компрессорного машиностроения"', 'ОАО "Пензкомпрессормаш"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (797, 'PZKMP', 'Открытое акционерное общество "Пензенский завод компрессорного машиностроения"', 'ОАО "Пензкомпрессормаш"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (798, 'QIWI', 'QIWI PLC', 'iQIWI', 'US74735M1080');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (799, 'RARZ', 'Открытое акционерное общество "Ракитянский Арматурный Завод"', 'ОАО "РАКИТЯНСКИЙ АРМАТУРНЫЙ ЗАВОД"', '');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (800, 'RASP', 'ПАО Распадская ао', 'Распадская', 'RU000A0B90N8');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (801, 'RATP', 'Открытое Акционерное Общество "Ратеп"', 'ОАО "РАТЕП"', 'RU000A0HG636');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (802, 'RBCI-004D', 'РБК Информ. системы ао -004D', 'РБК ИС4-ао', 'RU0005707834');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (803, 'RBCM', 'РБК ПАО ао', 'РБК ао', 'RU000A0JR6A6');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (804, 'RDNE', 'Публичное акционерное общество "НК "Роснефть"-Дагнефть"', 'ПАО "НК "Роснефть"-Дагнефть"', 'RU0007294146');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (805, 'RDNEP', 'Публичное акционерное общество "НК "Роснефть"-Дагнефть"', 'ПАО "НК "Роснефть"-Дагнефть"', 'RU0007294153');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (806, 'RDRB', 'РоссийскийДорож Банк ПАО ао', 'РДБанк ао', 'RU000A0JU6Q7');
@@ -966,6 +966,7 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (936, 'SBGS', 'Акционерное общество "Сибирьгазсервис"', 'АО "Сибирьгазсервис"', 'RU0006936168');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (937, 'SBGZ', 'Акционерное общество по производству технических газов имени Кима Ф.И.', 'АО "Сибтехгаз" им. Кима Ф.И.', 'RU000A0JRG36');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (938, 'SCEM', 'Акционерное общество "Холдинговая Компания "Сибирский цемент"', 'АО "ХК "Сибцем"', 'RU000A0JP3C1');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (979, 'SLST', 'Акционерное общество "Салаватстекло"', 'АО "Салаватстекло"', 'RU0008114590');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (939, 'SCKK', 'Открытое акционерное общество "Селенгинский целлюлозно-картонный комбинат"', 'ОАО "Селенгинский ЦКК"', 'RU000A0J4T19');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (940, 'SDKO', 'Открытое акционерное общество "САДКО"', 'ОАО "САДКО"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (982, 'SMGFP', 'Публичное акционерное общество "Самаранефтегеофизика"', 'ПАО СНГЕО', 'RU0001206708');
@@ -1011,7 +1012,6 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (976, 'SLNE', 'Открытое акционерное общество "Славнефть-Ярославнефтепродукт"', 'ОАО "Славнефть-Ярославнефтепродукт"', 'RU0009848345');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (977, 'SLNEP', 'Открытое акционерное общество "Славнефть-Ярославнефтепродукт"', 'ОАО "Славнефть-Ярославнефтепродукт"', 'RU0009848352');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (978, 'SLNT', 'Акционерное общество "СТЕКЛОНиТ"', 'АО "СТЕКЛОНиТ"', 'RU0008013024');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (979, 'SLST', 'Акционерное общество "Салаватстекло"', 'АО "Салаватстекло"', 'RU0008114590');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (980, 'SMER', 'Открытое акционерное общество "Смоленская энергоремонтная компания"', 'ОАО "Смоленская энергоремонтная компания"', 'RU000A0D9VL9');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (981, 'SMGF', 'Публичное акционерное общество "Самаранефтегеофизика"', 'ПАО СНГЕО', 'RU0001206690');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (984, 'SMNF', 'Публичное акционерное общество "НК "Роснефть" - Смоленскнефтепродукт"', 'ПАО "НК "Роснефть" - Смоленскнефтепродукт"', 'RU0008012067');
@@ -1050,6 +1050,7 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1017, 'SSTM', 'Открытое акционерное общество (ХОЛДИНГ) "СПЕЦСТРОЙМАТЕРИАЛЫ"', 'ОАО (ХОЛДИНГ) "СПЕЦСТРОЙМАТЕРИАЛЫ"', 'RU000A0BL5W6');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1018, 'STGZ', 'Акционерное общество "Стройтрансгаз"', 'АО "Стройтрансгаз"', ' АО "СТГ"');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1019, 'STGZP', 'Акционерное общество "Стройтрансгаз"', 'АО "Стройтрансгаз"', ' АО "СТГ"');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1107, 'TNFPP', 'Акционерное общество "Татнефтепром"', 'АО "Татнефтепром"', 'RU000A0JQ706');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1020, 'STKG', 'Акционерное общество "Газпром газораспределение Ставрополь"', 'АО "Газпром газораспределение Ставрополь"', 'RU000A0JPHH3');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1021, 'STKGP', 'Акционерное общество "Газпром газораспределение Ставрополь"', 'АО "Газпром газораспределение Ставрополь"', 'RU000A0JPHG5');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1111, 'TNYA', 'Акционерное общество "РН-Ярославль"', 'АО "РН-Ярославль"', 'RU000A0JQ2T6');
@@ -1095,6 +1096,7 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1059, 'TATN', 'ПАО "Татнефть" ао', 'Татнфт 3ао', 'RU0009033591');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1060, 'TATNP', 'ПАО "Татнефть" ап 3 вып.', 'Татнфт 3ап', 'RU0006944147');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1061, 'TAVR', 'Банк "Таврический"(ОАО) -ао', 'Таврическ.', 'RU000A0JPBC7');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1108, 'TNKS', 'Открытое акционерное общество "Тюменнефтекомплектсервис"', 'ОАО "Тюменнефтекомплектсервис"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1062, 'TAVRP', 'Санкт-Петербургский акционерный коммерческий банк "Таврический" (открытое акционерное общество)', 'Банк "Таврический" (ОАО)', 'RU000A0JPBD5');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1063, 'TAXD', 'Открытое акционерное общество "4-й таксомоторный парк"', 'ОАО "4-й таксомоторный парк"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1064, 'TAXF', 'Открытое акционерное общество "5-й таксомоторный парк"', 'ОАО "5 ТМП"', '');
@@ -1142,8 +1144,6 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1104, 'TMTP', 'Акционерное общество "Туапсинский морской торговый порт"', 'АО "ТМТП"', 'RU0009843056');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1105, 'TNAR', 'Открытое акционерное общество "Государственно-акционерный комплекс по промышленным и потребительским товарам и услугам - Корпорация Тонар"', 'ОАО "Корпорация Тонар"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1106, 'TNFP', 'Акционерное общество "Татнефтепром"', 'АО "Татнефтепром"', 'RU000A0JQ6Z4');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1107, 'TNFPP', 'Акционерное общество "Татнефтепром"', 'АО "Татнефтепром"', 'RU000A0JQ706');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1108, 'TNKS', 'Открытое акционерное общество "Тюменнефтекомплектсервис"', 'ОАО "Тюменнефтекомплектсервис"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1109, 'TNKSP', 'Открытое акционерное общество "Тюменнефтекомплектсервис"', 'ОАО "Тюменнефтекомплектсервис"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1110, 'TNSE', 'ПАО ГК "ТНС энерго" ао', 'ТНСэнрг ао', 'RU000A0JUCQ5');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1112, 'TNYAP', 'Акционерное общество "РН-Ярославль"', 'АО "РН-Ярославль"', 'RU000A0JQ2U4');
@@ -1273,6 +1273,9 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1230, 'UTBNP', 'Публичное акционерное общество "Уральский Транспортный банк"', 'ПАО "Уралтрансбанк"', 'RU000A0JRWM8');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1231, 'UTII', 'Платформа ЮТИНЕТ.РУ ПАО - ао', 'Ютинет.Ру', 'RU000A0JRHV0');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1232, 'UTST', 'Открытое акционерное общество "Уралтехнострой-Туймазыхиммаш"', 'ОАО "Уралтехнострой-Туймазыхиммаш"', 'RU000A0JNY20');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1268, 'VNIPP', 'Публичное акционерное общество "ВНИПИгаздобыча"', 'ПАО "ВНИПИгаздобыча"', 'RU000A0JNY53');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1269, 'VNZM', 'Публичное акционерное общество "Акционерная компания Востокнефтезаводмонтаж"', 'ПАО "АК ВНЗМ"', 'RU0007984951');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1270, 'VOAD', 'Открытое акционерное общество "Вологодавтодор"', 'ОАО "Вологодавтодор"', 'RU000A0JRGG3');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1233, 'UTSY', 'Единые Техно Системы" ПАО ао;ЕТС ао;RU000A0JULB8;1-01-05281-D;430000000;1,00;SUR;2015-05-22;"Edinie Tehno Sistemi" PAO ao;common_share;Акция обыкновенная
 UWGN;ПАО НПК ОВК ао;ОВК ао;RU000A0JVBT9;1-01-82031-H;113423948;1,00;SUR;2015-04-29;OVK ao;common_share;Акция обыкновенная
 UWGN-001D;ПАО НПК ОВК 001D ао;ОВК-001D;RU000A0JVBU7;1-01-82031-H-001D;99990000;1,00;SUR;2015-04-29;OVK-001D ao;common_share;Акция обыкновенная
@@ -1315,9 +1318,6 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1265, 'VNGF', 'Акционерное общество "Волгограднефтегеофизика"', 'АО "ВНГ"', 'RU000A0JRBJ8');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1266, 'VNGFP', 'Акционерное общество "Волгограднефтегеофизика"', 'АО "ВНГ"', 'RU000A0JRBK6');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1267, 'VNIP', 'Публичное акционерное общество "ВНИПИгаздобыча"', 'ПАО "ВНИПИгаздобыча"', 'RU000A0JNY46');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1268, 'VNIPP', 'Публичное акционерное общество "ВНИПИгаздобыча"', 'ПАО "ВНИПИгаздобыча"', 'RU000A0JNY53');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1269, 'VNZM', 'Публичное акционерное общество "Акционерная компания Востокнефтезаводмонтаж"', 'ПАО "АК ВНЗМ"', 'RU0007984951');
-INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1270, 'VOAD', 'Открытое акционерное общество "Вологодавтодор"', 'ОАО "Вологодавтодор"', 'RU000A0JRGG3');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1271, 'VOGZ', 'Открытое акционерное общество "Воронежоблгаз"', 'ОАО "Воронежоблгаз"', 'RU0007964912');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1272, 'VOMD', 'Открытое акционерное общество "Вологодский оптико-механический завод"', 'ОАО "ВОМЗ"', 'RU000A0JNZU3');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1274, 'VONM', 'Открытое акционерное общество "Волгограднефтемаш"', 'ОАО "Волгограднефтемаш"', 'RU000A0HFZE7');
@@ -1406,3 +1406,4 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1347, 'ZVST', 'Открытое акционерное общество "Зарубежводстрой"', 'ОАО "Зарубежводстрой"', 'RU000A0JPEP3');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1348, 'ZZGT', 'Открытое акционерное общество "Заволжский завод гусеничных тягачей"', 'ОАО "ЗЗГТ"', 'RU000A0JRC89');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1349, 'ZZGTP', 'Открытое акционерное общество "Заволжский завод гусеничных тягачей"', 'ОАО "ЗЗГТ"', '');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1500, 'NKNCP', 'Нижнекамскнефтехим" ПАО ао (прв)', 'ПАО "Нижнекамскшина"', 'RU0006765104');
