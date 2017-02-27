@@ -4,6 +4,7 @@ import lombok.Data;
 import ru.antowka.stock.domain.model.price.Price;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,4 +31,6 @@ public class Ticker {
 
     @OneToMany
     private List<Price> prices;
+
+    private Date lastUpdatePrice;
 }

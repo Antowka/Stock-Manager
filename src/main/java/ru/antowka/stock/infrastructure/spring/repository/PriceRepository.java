@@ -7,4 +7,5 @@ import ru.antowka.stock.domain.model.price.Price;
  * Repository for prices
  */
 public interface PriceRepository extends JpaRepository<Price, Long> {
+
 }

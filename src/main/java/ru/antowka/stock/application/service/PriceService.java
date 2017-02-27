@@ -10,14 +10,16 @@ import ru.antowka.stock.domain.model.price.Price;
 import ru.antowka.stock.domain.model.ticker.Ticker;
 import ru.antowka.stock.infrastructure.spring.repository.PriceRepository;
 import ru.antowka.stock.infrastructure.spring.repository.TickerRepository;
+import ru.antowka.stock.infrastructure.utils.DateUtils;
 import ru.antowka.stock.infrastructure.utils.JsonUtils;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by anton on 23.02.17.
+ * Update price
  */
 @Service
 public class PriceService {
@@ -36,52 +38,60 @@ public class PriceService {
         this.tickerRepository = tickerRepository;
     }
 
-    @Scheduled(fixedDelay=15000)
+    @Scheduled(fixedDelay=40000)
     public void loadPrices() {
 
-        List<Ticker> tickers = tickerRepository.findAll();
+        Ticker ticker = tickerRepository.findByMaxOldUpdateDate();
+        ticker.setLastUpdatePrice(new Date());
+        tickerRepository.save(ticker);
 
-        for (Ticker ticker : tickers) {
 
-            String directUrl = url
-                    .replace("[BOARD_ID]", ticker.getBoardId())
-                    .replace("[TICKER_ID]", ticker.getName());
+        String directUrl = url
+                .replace("[BOARD_ID]", ticker.getBoardId())
+                .replace("[TICKER_ID]", ticker.getName());
 
-            try {
-                JsonNode jsonNode = JsonUtils.readJsonFromUrl(directUrl);
-                Iterator<JsonNode> elements = jsonNode.elements();
-                Price price = new Price();
+        try {
 
-                while (elements.hasNext()) {
+            JsonNode jsonNode = JsonUtils.readJsonFromUrl(directUrl);
 
-                    JsonNode element = elements.next();
-
-                    if (element instanceof ObjectNode) {
-
-                        ObjectNode priceJson = (ObjectNode) element;
-                        double prevPrice = priceJson.findValue("PREVPRICE").asDouble();
-                        double openPrice =  priceJson.findValue("OPEN").asDouble();
-                        double highPrice =  priceJson.findValue("HIGH").asDouble();
-                        double lowPrice =  priceJson.findValue("LOW").asDouble();
-                        double closePrice = priceJson.findValue("LAST").asDouble();
-
-                        if (openPrice == 0 && highPrice == 0 && lowPrice == 0 && closePrice == 0 && prevPrice != 0) {
-                            openPrice = highPrice = lowPrice = closePrice = prevPrice;
-                        }
-
-                        price.setOpen((float)openPrice);
-                        price.setHigh((float)highPrice);
-                        price.setLow((float)lowPrice);
-                        price.setClose((float)closePrice);
-
-                        //TODO: Продолжить маппинг
-                    }
-                }
-
-            } catch (IOException e) {
-                //TODO: Добавить логер
-                e.printStackTrace();
+            if (jsonNode == null) {
+                System.out.println("Can't read: " + directUrl);
+                return;
             }
+
+            Iterator<JsonNode> elements = jsonNode.elements();
+            Price price = new Price();
+
+            while (elements.hasNext()) {
+
+                JsonNode element = elements.next();
+
+                if (element instanceof ObjectNode) {
+
+                    ObjectNode priceJson = (ObjectNode) element;
+                    double prevPrice = priceJson.findValue("PREVPRICE").asDouble();
+                    double openPrice =  priceJson.findValue("OPEN").asDouble();
+                    double highPrice =  priceJson.findValue("HIGH").asDouble();
+                    double lowPrice =  priceJson.findValue("LOW").asDouble();
+                    double closePrice = priceJson.findValue("LAST").asDouble();
+
+                    price.setOpen((float)openPrice);
+                    price.setHigh((float)highPrice);
+                    price.setLow((float)lowPrice);
+                    price.setClose((float)closePrice);
+                    price.setTicker(ticker);
+                    price.setDate(DateUtils.stringToDate(priceJson.findValue("SYSTIME").asText()));
+                    price.setVolume(priceJson.findValue("VALTODAY").asLong());
+                    price.setPrevPrice((float)prevPrice);
+
+                    priceRepository.saveAndFlush(price);
+                    break;
+                }
+            }
+
+        } catch (IOException e) {
+            //TODO: Добавить логер
+            e.printStackTrace();
         }
     }
 }
