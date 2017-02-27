@@ -1407,3 +1407,4 @@ INSERT INTO public.tickers (id, name, short_description, full_description, isin)
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1348, 'ZZGT', 'Открытое акционерное общество "Заволжский завод гусеничных тягачей"', 'ОАО "ЗЗГТ"', 'RU000A0JRC89');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1349, 'ZZGTP', 'Открытое акционерное общество "Заволжский завод гусеничных тягачей"', 'ОАО "ЗЗГТ"', '');
 INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1500, 'NKNCP', 'Нижнекамскнефтехим" ПАО ао (прв)', 'ПАО "Нижнекамскшина"', 'RU0006765104');
+INSERT INTO public.tickers (id, name, short_description, full_description, isin) VALUES (1501, 'ROSN', 'РосНефть ПАО ао', 'РосНефть ПАО ао', null);
