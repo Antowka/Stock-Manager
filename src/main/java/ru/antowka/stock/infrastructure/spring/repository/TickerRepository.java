@@ -13,6 +13,6 @@ public interface TickerRepository extends JpaRepository<Ticker, Long> {
     Ticker findByName(String name);
 
 
-    @Query(value = "SELECT * FROM tickers ORDER BY last_update_price DESC LIMIT 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM tickers ORDER BY last_update_price ASC LIMIT 1", nativeQuery = true)
     Ticker findByMaxOldUpdateDate();
 }
