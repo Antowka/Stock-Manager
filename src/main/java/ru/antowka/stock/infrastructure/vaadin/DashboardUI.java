@@ -5,8 +5,9 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.navigator.SpringNavigator;
 import com.vaadin.spring.navigator.SpringViewProvider;
-import com.vaadin.ui.UI;
+import com.vaadin.ui.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.antowka.stock.infrastructure.vaadin.partial.HeaderMenuLayout;
 
 /**
  * Start UI
@@ -16,9 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class DashboardUI extends UI {
 
     private SpringViewProvider viewProvider;
+    private HeaderMenuLayout headerMenuLayout;
 
     @Autowired
-    public DashboardUI(SpringNavigator navigator, SpringViewProvider viewProvider) {
+    public DashboardUI(SpringNavigator navigator, SpringViewProvider viewProvider, HeaderMenuLayout headerMenuLayout) {
+        this.viewProvider = viewProvider;
+        this.headerMenuLayout = headerMenuLayout;
+
         navigator.init(this, this);
         navigator.addProvider(viewProvider);
     }

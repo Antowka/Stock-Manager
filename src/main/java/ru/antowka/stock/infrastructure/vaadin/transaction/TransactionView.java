@@ -7,10 +7,12 @@ import com.vaadin.server.FontAwesome;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.util.StringUtils;
 import ru.antowka.stock.application.mapper.transaction.TransactionMapper;
 import ru.antowka.stock.application.representation.transaction.TransactionRepresentation;
 import ru.antowka.stock.application.service.TransactionService;
+import ru.antowka.stock.infrastructure.vaadin.partial.HeaderMenuLayout;
 import ru.antowka.stock.infrastructure.vaadin.transaction.component.TransactionEditorComponent;
 
 import javax.annotation.PostConstruct;
@@ -30,6 +32,7 @@ public class TransactionView extends VerticalLayout implements View {
     private TransactionService transactionService;
     private TransactionMapper transactionMapper;
     private TransactionEditorComponent transactionEditor;
+    private HeaderMenuLayout headerMenuLayout;
     private final TextField filterByTicker = new TextField();
     private final Button addNewBtn = new Button("Add transaction", FontAwesome.PLUS);;
 
@@ -49,13 +52,18 @@ public class TransactionView extends VerticalLayout implements View {
         this.transactionEditor = transactionEditor;
     }
 
+    @Autowired
+    public void setHeaderMenuLayout(HeaderMenuLayout headerMenuLayout) {
+        this.headerMenuLayout = headerMenuLayout;
+    }
+
     @PostConstruct
     void init() {
 
         // build layout
         HorizontalLayout actions = new HorizontalLayout(filterByTicker, addNewBtn);
         HorizontalLayout gridAndEditor = new HorizontalLayout(grid, transactionEditor);
-        VerticalLayout mainLayout = new VerticalLayout(actions, gridAndEditor);
+        VerticalLayout mainLayout = new VerticalLayout(headerMenuLayout, actions, gridAndEditor);
         addComponent(mainLayout);
 
         // Configure layouts and components

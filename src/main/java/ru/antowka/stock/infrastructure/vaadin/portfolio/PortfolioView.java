@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ru.antowka.stock.application.mapper.position.PositionMapper;
 import ru.antowka.stock.application.representation.position.PositionRepresentation;
 import ru.antowka.stock.application.service.PortfolioService;
+import ru.antowka.stock.infrastructure.vaadin.partial.HeaderMenuLayout;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -26,6 +27,7 @@ public class PortfolioView extends VerticalLayout implements View {
     private Grid grid = new Grid();
     private PortfolioService portfolioService;
     private PositionMapper positionMapper;
+    private HeaderMenuLayout headerMenuLayout;
 
     @Autowired
     public void setPortfolioService(PortfolioService portfolioService) {
@@ -37,18 +39,25 @@ public class PortfolioView extends VerticalLayout implements View {
         this.positionMapper = positionMapper;
     }
 
+    @Autowired
+    public void setHeaderMenuLayout(HeaderMenuLayout headerMenuLayout) {
+        this.headerMenuLayout = headerMenuLayout;
+    }
+
     @PostConstruct
     void init() {
 
         // build layout
-        VerticalLayout mainLayout = new VerticalLayout(grid);
+        VerticalLayout mainLayout = new VerticalLayout();
+        mainLayout.addComponent(headerMenuLayout);
+        mainLayout.addComponent(grid);
         addComponent(mainLayout);
 
         mainLayout.setMargin(true);
         mainLayout.setSpacing(true);
 
         grid.setWidth(100, Unit.PERCENTAGE);
-        grid.setColumns("ticker", "amount", "averagePrice", "sum");
+        grid.setColumns("ticker", "amount", "averagePrice", "lastMarketPlace", "sum");
 
         List<PositionRepresentation> positions = portfolioService
                 .getPortfolio()

@@ -19,6 +19,7 @@ public class PositionMapper implements Mapper<Position, PositionRepresentation> 
         representation.setTicker(entity.getTicker());
         representation.setSum(entity.getSum());
         representation.setAveragePrice(entity.getAveragePrice());
+        representation.setLastMarketPlace(entity.getLastMarketPlace());
         representation.setAmount(entity.getAmount());
 
         return representation;
@@ -31,6 +32,7 @@ public class PositionMapper implements Mapper<Position, PositionRepresentation> 
         position.setTicker(command.getTicker());
         position.setSum(command.getSum());
         position.setAveragePrice(command.getAveragePrice());
+        position.setLastMarketPlace(command.getLastMarketPlace());
         position.setAmount(command.getAmount());
 
         return position;
