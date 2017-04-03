@@ -38,7 +38,7 @@ public class PriceService {
         this.tickerRepository = tickerRepository;
     }
 
-    @Scheduled(cron="*/25 0 0-10 * * MON-FRI")
+    @Scheduled(cron="*/25 * 0-10 * * MON-FRI")
     public void loadPrices() {
 
         Ticker ticker = tickerRepository.findByMaxOldUpdateDate();
