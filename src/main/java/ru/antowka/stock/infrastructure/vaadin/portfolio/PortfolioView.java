@@ -27,7 +27,6 @@ public class PortfolioView extends VerticalLayout implements View {
     private Grid grid = new Grid();
     private PortfolioService portfolioService;
     private PositionMapper positionMapper;
-    private HeaderMenuLayout headerMenuLayout;
 
     @Autowired
     public void setPortfolioService(PortfolioService portfolioService) {
@@ -39,17 +38,12 @@ public class PortfolioView extends VerticalLayout implements View {
         this.positionMapper = positionMapper;
     }
 
-    @Autowired
-    public void setHeaderMenuLayout(HeaderMenuLayout headerMenuLayout) {
-        this.headerMenuLayout = headerMenuLayout;
-    }
 
     @PostConstruct
     void init() {
 
         // build layout
         VerticalLayout mainLayout = new VerticalLayout();
-        mainLayout.addComponent(headerMenuLayout);
         mainLayout.addComponent(grid);
         addComponent(mainLayout);
 

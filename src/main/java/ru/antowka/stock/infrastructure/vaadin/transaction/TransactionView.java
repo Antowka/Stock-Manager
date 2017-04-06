@@ -32,7 +32,6 @@ public class TransactionView extends VerticalLayout implements View {
     private TransactionService transactionService;
     private TransactionMapper transactionMapper;
     private TransactionEditorComponent transactionEditor;
-    private HeaderMenuLayout headerMenuLayout;
     private final TextField filterByTicker = new TextField();
     private final Button addNewBtn = new Button("Add transaction", FontAwesome.PLUS);;
 
@@ -52,10 +51,6 @@ public class TransactionView extends VerticalLayout implements View {
         this.transactionEditor = transactionEditor;
     }
 
-    @Autowired
-    public void setHeaderMenuLayout(HeaderMenuLayout headerMenuLayout) {
-        this.headerMenuLayout = headerMenuLayout;
-    }
 
     @PostConstruct
     void init() {
@@ -63,7 +58,7 @@ public class TransactionView extends VerticalLayout implements View {
         // build layout
         HorizontalLayout actions = new HorizontalLayout(filterByTicker, addNewBtn);
         HorizontalLayout gridAndEditor = new HorizontalLayout(grid, transactionEditor);
-        VerticalLayout mainLayout = new VerticalLayout(headerMenuLayout, actions, gridAndEditor);
+        VerticalLayout mainLayout = new VerticalLayout(actions, gridAndEditor);
         addComponent(mainLayout);
 
         // Configure layouts and components

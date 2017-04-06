@@ -19,21 +19,15 @@ public class DashboardView extends VerticalLayout implements View {
 
     private SpringNavigator navigator;
 
-    private HeaderMenuLayout headerMenuLayout;
 
     @Autowired
     public void setNavigator(SpringNavigator navigator) {
         this.navigator = navigator;
     }
 
-    @Autowired
-    public void setHeaderMenuLayout(HeaderMenuLayout headerMenuLayout) {
-        this.headerMenuLayout = headerMenuLayout;
-    }
-
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
-        addComponent(headerMenuLayout);
+
     }
 }
