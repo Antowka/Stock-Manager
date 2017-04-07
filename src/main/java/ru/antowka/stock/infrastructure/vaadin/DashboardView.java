@@ -6,7 +6,6 @@ import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.navigator.SpringNavigator;
 import com.vaadin.ui.VerticalLayout;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.antowka.stock.infrastructure.vaadin.partial.HeaderMenuLayout;
 
 
 /**
