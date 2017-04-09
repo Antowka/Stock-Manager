@@ -43,7 +43,7 @@ public class PriceService {
 
         Ticker ticker = tickerRepository.findByMaxOldUpdateDate();
         ticker.setLastUpdatePrice(new Date());
-        tickerRepository.save(ticker);
+        tickerRepository.saveAndFlush(ticker);
 
 
         String directUrl = url
@@ -84,12 +84,7 @@ public class PriceService {
                     price.setVolume(priceJson.findValue("VALTODAY").asLong());
                     price.setPrevPrice((float)prevPrice);
 
-                    Price savedPrice = priceRepository.saveAndFlush(price);
-
-                    if (savedPrice.getId() != null) {
-                        ticker.setLastUpdatePrice(new Date());
-                        tickerRepository.saveAndFlush(ticker);
-                    }
+                    priceRepository.saveAndFlush(price);
 
                     break;
                 }
