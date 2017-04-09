@@ -2,6 +2,7 @@ package ru.antowka.stock.domain.model.portfolio.vo;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -15,6 +16,7 @@ import javax.persistence.Table;
 public class Position {
 
     @Id
+    @Column(name = "ticker_name")
     private String ticker;
     private Integer amount;
     private Float averagePrice;

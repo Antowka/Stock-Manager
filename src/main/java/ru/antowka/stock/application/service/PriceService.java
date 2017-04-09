@@ -84,7 +84,13 @@ public class PriceService {
                     price.setVolume(priceJson.findValue("VALTODAY").asLong());
                     price.setPrevPrice((float)prevPrice);
 
-                    priceRepository.saveAndFlush(price);
+                    Price savedPrice = priceRepository.saveAndFlush(price);
+
+                    if (savedPrice.getId() != null) {
+                        ticker.setLastUpdatePrice(new Date());
+                        tickerRepository.saveAndFlush(ticker);
+                    }
+
                     break;
                 }
             }
