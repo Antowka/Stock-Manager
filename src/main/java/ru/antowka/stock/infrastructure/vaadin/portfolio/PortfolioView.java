@@ -51,7 +51,14 @@ public class PortfolioView extends VerticalLayout implements View {
         mainLayout.setSpacing(true);
 
         grid.setWidth(100, Unit.PERCENTAGE);
-        grid.setColumns("ticker", "amount", "averagePrice", "lastMarketPlace", "sum");
+        grid.setColumns(
+                "ticker",
+                "amount",
+                "averagePrice",
+                "lastMarketPlace",
+                "sum",
+                "diffPricesPercent",
+                "averageProfit");
 
         List<PositionRepresentation> positions = portfolioService
                 .getPortfolio()

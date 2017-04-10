@@ -21,6 +21,8 @@ public class PositionMapper implements Mapper<Position, PositionRepresentation> 
         representation.setAveragePrice(entity.getAveragePrice());
         representation.setLastMarketPlace(entity.getLastMarketPlace());
         representation.setAmount(entity.getAmount());
+        representation.setDiffPricesPercent(entity.getDiffPricesPercent());
+        representation.setAverageProfit(entity.getAverageProfit());
 
         return representation;
     }
