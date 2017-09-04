@@ -17,10 +17,10 @@ public interface PositionRepository extends ReadOnlyRepository<Position, String>
             "  t.ticker_name, " +
             "  SUM(t.amount)                                         AS amount, " +
             "  round(CAST(SUM(t.sum) AS NUMERIC), 3)                 AS sum, " +
-            "  round(CAST(SUM(t.sum) / SUM(t.amount) AS NUMERIC), 2) AS average_price, " +
+            "  round(CAST(SUM(t.sum) / NULLIF(SUM(t.amount),0) AS NUMERIC), 2) AS average_price, " +
             "  MAX(p.prev_price)                                     AS last_market_place, " +
-            "  round(CAST((MAX(p.prev_price) / (SUM(t.sum) / SUM(t.amount)) - 1)*100 AS NUMERIC),2) AS diff_prices_percent, " +
-            "  round(CAST((MAX(p.prev_price)  * SUM(t.amount)) - SUM(t.sum) AS NUMERIC),2)  AS average_profit " +
+            "  round(CAST((MAX(p.prev_price) / (SUM(t.sum) / NULLIF(SUM(t.amount),0)) - 1)*100 AS NUMERIC),2) AS diff_prices_percent, " +
+            "  round(CAST((MAX(p.prev_price)  * NULLIF(SUM(t.amount),0)) - SUM(t.sum) AS NUMERIC),2)  AS average_profit " +
             "FROM ( " +
             "       SELECT " +
             "         tk.id                    AS ticker_id, " +
