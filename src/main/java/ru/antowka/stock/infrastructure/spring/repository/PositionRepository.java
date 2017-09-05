@@ -12,7 +12,8 @@ import java.util.List;
 public interface PositionRepository extends ReadOnlyRepository<Position, String> {
 
     @Override
-    @Query(value = "SELECT " +
+    @Query(value = "SELECT * FROM (" +
+            "SELECT " +
             "  t.ticker_id, " +
             "  t.ticker_name, " +
             "  SUM(t.amount)                                         AS amount, " +
@@ -45,6 +46,7 @@ public interface PositionRepository extends ReadOnlyRepository<Position, String>
             "       WHERE tt.name = 'SELL' " +
             "     ) t " +
             "  LEFT JOIN price p ON p.ticker_id = t.ticker_id AND p.id = (SELECT id FROM price WHERE ticker_id = t.ticker_id ORDER BY date DESC LIMIT 1) " +
-            "GROUP BY t.ticker_id, t.ticker_name", nativeQuery = true)
+            "GROUP BY t.ticker_id, t.ticker_name" +
+            ") r WHERE r.amount > 0", nativeQuery = true)
     List<Position> findAll();
 }
