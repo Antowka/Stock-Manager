@@ -12,4 +12,6 @@ import java.util.List;
 public class PortfolioRepresentation {
 
     private List<PositionRepresentation> positions;
+    private float invested;
+    private float liquidationValue;
 }
