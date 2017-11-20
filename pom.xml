@@ -34,6 +34,10 @@
             <url>http://maven.vaadin.com/vaadin-addons</url>
         </repository>
         <repository>
+            <id>sonatype vaadin</id>
+            <url>https://oss.sonatype.org/content/repositories/vaadin/</url>
+        </repository>
+        <repository>
             <id>jcenter</id>
             <url>http://jcenter.bintray.com </url>
             <snapshots>
@@ -135,21 +139,23 @@
 
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-bom</artifactId>
-                <version>7.7.6</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>vaadin-snapshots</id>
+            <url>http://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <plugins>

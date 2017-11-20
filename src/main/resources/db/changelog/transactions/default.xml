@@ -8,4 +8,8 @@
         <sqlFile path="classpath:db/changelog/transactions/transaction_types.sql" stripComments="true" />
     </changeSet>
 
+    <changeSet id="schema-1488044516" author="Anton Nikanorov">
+        <sqlFile path="classpath:db/changelog/transactions/transaction_demo.sql" stripComments="true" />
+    </changeSet>
+
 </databaseChangeLog>

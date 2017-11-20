@@ -11,5 +11,8 @@ public class PositionRepresentation {
     private String ticker;
     private Integer amount;
     private Float averagePrice;
+    private Float lastMarketPlace;
     private Float sum;
+    private Float diffPricesPercent;
+    private Float averageProfit;
 }

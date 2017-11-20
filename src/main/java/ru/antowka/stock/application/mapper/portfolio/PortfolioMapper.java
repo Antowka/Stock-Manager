@@ -35,6 +35,9 @@ public class PortfolioMapper implements Mapper<Portfolio, PortfolioRepresentatio
                 .collect(Collectors.toList())
         );
 
+        representation.setInvested(entity.getInvested());
+        representation.setLiquidationValue(entity.getLiquidationValue());
+
         return representation;
     }
 

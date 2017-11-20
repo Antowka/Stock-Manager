@@ -1,4 +1,4 @@
-package ru.antowka.stock.infrastructure.vaadin.transaction;
+package ru.antowka.stock.infrastructure.vaadin.transaction.component;
 
 import com.vaadin.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.event.ShortcutAction;

@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class DateUtils {
 
-    private static final String DATE_PATERN = "yyyy-mm-dd HH:mm:ss";
+    private static final String DATE_PATERN = "yyyy-MM-dd HH:mm:ss";
     private final static Logger logger = Logger.getLogger(DateUtils.class);
 
     /**

@@ -8,4 +8,8 @@
         <sqlFile path="classpath:db/changelog/tickers/tickers.sql" stripComments="true" />
     </changeSet>
 
+    <changeSet id="tickers-add-board-id-1487882820" author="Anton Nikanorov">
+        <sqlFile path="classpath:db/changelog/tickers/add_board_id.sql" stripComments="true" />
+    </changeSet>
+
 </databaseChangeLog>

@@ -7,10 +7,13 @@ import com.vaadin.server.FontAwesome;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.util.StringUtils;
 import ru.antowka.stock.application.mapper.transaction.TransactionMapper;
 import ru.antowka.stock.application.representation.transaction.TransactionRepresentation;
 import ru.antowka.stock.application.service.TransactionService;
+import ru.antowka.stock.infrastructure.vaadin.partial.HeaderMenuLayout;
+import ru.antowka.stock.infrastructure.vaadin.transaction.component.TransactionEditorComponent;
 
 import javax.annotation.PostConstruct;
 import java.util.Date;
@@ -47,6 +50,7 @@ public class TransactionView extends VerticalLayout implements View {
     public void setTransactionEditor(TransactionEditorComponent transactionEditor) {
         this.transactionEditor = transactionEditor;
     }
+
 
     @PostConstruct
     void init() {

@@ -1,0 +1,1 @@
+ALTER TABLE public.tickers ADD board_id VARCHAR(5) DEFAULT 'TQBR' NULL;
