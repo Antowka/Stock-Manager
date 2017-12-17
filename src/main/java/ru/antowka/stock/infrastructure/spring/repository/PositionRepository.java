@@ -24,27 +24,21 @@ public interface PositionRepository extends ReadOnlyRepository<Position, String>
             "  round(CAST((MAX(p.prev_price)  * NULLIF(SUM(t.amount),0)) - SUM(t.sum) AS NUMERIC),2)  AS average_profit " +
             "FROM ( " +
             "       SELECT " +
-            "         tk.id                    AS ticker_id, " +
-            "         tk.name                  AS ticker_name, " +
-            "         tbuy.amount              AS amount, " +
-            "         tbuy.price               AS price, " +
-            "         tbuy.amount * tbuy.price AS sum " +
-            "       FROM transactions tbuy " +
-            "         LEFT JOIN transaction_types tt ON tbuy.type_id = tt.id " +
-            "         LEFT JOIN tickers tk ON tbuy.ticker_id = tk.id " +
-            "       WHERE tt.name = 'BUY' " +
-            "       UNION ALL " +
-            "       SELECT " +
-            "         tk.id           AS tiker_id, " +
-            "         tk.name         AS ticker_name, " +
-            "         0 - tbuy.amount AS amount, " +
-            "         NULL            AS price, " +
-            "         NULL            AS sum " +
-            "       FROM transactions tbuy " +
-            "         LEFT JOIN transaction_types tt ON tbuy.type_id = tt.id " +
-            "         LEFT JOIN tickers tk ON tbuy.ticker_id = tk.id " +
-            "       WHERE tt.name = 'SELL' " +
-            "     ) t " +
+            "            tk.id                    AS ticker_id, " +
+            "            tk.name                  AS ticker_name, " +
+            "            tbuy.price               AS price, " +
+            "            CASE " +
+            "              WHEN tt.name = 'SELL' THEN 0 - tbuy.amount " +
+            "              WHEN tt.name = 'BUY' THEN tbuy.amount " +
+            "            END AS amount, " +
+            "            CASE " +
+            "               WHEN tt.name = 'BUY' THEN tbuy.amount * tbuy.price " +
+            "               WHEN tt.name = 'SELL' THEN  (0 - tbuy.amount) * tbuy.price " +
+            "            END AS sum " +
+            "            FROM transactions tbuy " +
+            "                LEFT JOIN transaction_types tt ON tbuy.type_id = tt.id " +
+            "                LEFT JOIN tickers tk ON tbuy.ticker_id = tk.id " +
+            "            ORDER BY date ASC     ) t " +
             "  LEFT JOIN price p ON p.ticker_id = t.ticker_id AND p.id = (SELECT id FROM price WHERE ticker_id = t.ticker_id ORDER BY date DESC LIMIT 1) " +
             "GROUP BY t.ticker_id, t.ticker_name" +
             ") r WHERE r.amount > 0", nativeQuery = true)

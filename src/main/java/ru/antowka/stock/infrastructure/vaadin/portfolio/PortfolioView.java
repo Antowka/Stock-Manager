@@ -9,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import ru.antowka.stock.application.mapper.position.PositionMapper;
 import ru.antowka.stock.application.representation.position.PositionRepresentation;
-import ru.antowka.stock.application.representation.transaction.TransactionRepresentation;
 import ru.antowka.stock.application.service.PortfolioService;
 import ru.antowka.stock.domain.model.portfolio.Portfolio;
-import ru.antowka.stock.domain.model.portfolio.vo.Position;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -79,7 +77,7 @@ public class PortfolioView extends VerticalLayout implements View {
         filterByTicker.addTextChangeListener(e -> positionList(e.getText(), positions));
 
 
-        this.positionsGrid.setContainerDataSource(new BeanItemContainer<>(PositionRepresentation.class, positions));
+        positionsGrid.setContainerDataSource(new BeanItemContainer<>(PositionRepresentation.class, positions));
 
         Label invested = new Label("Invested: " + portfolio.getInvested());
         Label liquidationValue = new Label("Liquidation Value: " + portfolio.getLiquidationValue());
