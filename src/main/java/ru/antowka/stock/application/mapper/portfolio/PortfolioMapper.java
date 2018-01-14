@@ -44,14 +44,15 @@ public class PortfolioMapper implements Mapper<Portfolio, PortfolioRepresentatio
     @Override
     public Portfolio toEntity(PortfolioRepresentation command) {
 
-        Portfolio portfolio = new Portfolio();
-        portfolio.setPositions(command
-                .getPositions()
-                .stream()
-                .map(positionRepresentation -> positionMapper.toEntity(positionRepresentation))
-                .collect(Collectors.toList())
-        );
-
-        return portfolio;
+//        Portfolio portfolio = new Portfolio();
+//        portfolio.setPositions(command
+//                .getPositions()
+//                .stream()
+//                .map(positionRepresentation -> positionMapper.toEntity(positionRepresentation))
+//                .collect(Collectors.toList())
+//        );
+//
+//        return portfolio;
+        return null;
     }
 }

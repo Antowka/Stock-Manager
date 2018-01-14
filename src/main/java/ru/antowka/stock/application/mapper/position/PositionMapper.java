@@ -16,13 +16,13 @@ public class PositionMapper implements Mapper<Position, PositionRepresentation> 
     public PositionRepresentation toRepresentation(Position entity) {
 
         PositionRepresentation representation = new PositionRepresentation();
-        representation.setTicker(entity.getTicker());
+        representation.setTicker(entity.getTicker().getName());
         representation.setSum(entity.getSum());
         representation.setAveragePrice(entity.getAveragePrice());
-        representation.setLastMarketPlace(entity.getLastMarketPlace());
         representation.setAmount(entity.getAmount());
         representation.setDiffPricesPercent(entity.getDiffPricesPercent());
         representation.setAverageProfit(entity.getAverageProfit());
+        representation.setLastMarketPrice(entity.getTicker().getLastPrice().getClose());
 
         return representation;
     }
@@ -30,13 +30,13 @@ public class PositionMapper implements Mapper<Position, PositionRepresentation> 
     @Override
     public Position toEntity(PositionRepresentation command) {
 
-        Position position = new Position();
-        position.setTicker(command.getTicker());
-        position.setSum(command.getSum());
-        position.setAveragePrice(command.getAveragePrice());
-        position.setLastMarketPlace(command.getLastMarketPlace());
-        position.setAmount(command.getAmount());
-
-        return position;
+//        Position position = new Position();
+//        position.setTicker(command.getTicker());
+//        position.setSum(command.getSum());
+//        position.setAveragePrice(command.getAveragePrice());
+//        position.setAmount(command.getAmount());
+//
+//        return position;
+        return null;
     }
 }

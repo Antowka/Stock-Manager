@@ -26,6 +26,8 @@ public class PriceService {
 
     private PriceRepository priceRepository;
     private TickerRepository tickerRepository;
+    private PortfolioService portfolioService;
+
     private static final String url = "http://www.micex.ru/issrpc/marketdata/stock/shares/daily/short/result.json?boardid=[BOARD_ID]&secid=[TICKER_ID]";
 
     @Autowired
@@ -38,13 +40,15 @@ public class PriceService {
         this.tickerRepository = tickerRepository;
     }
 
+    @Autowired
+    public void setPortfolioService(PortfolioService portfolioService) {
+        this.portfolioService = portfolioService;
+    }
+
     @Scheduled(cron="*/25 * 0-10 * * MON-FRI")
     public void loadPrices() {
 
         Ticker ticker = tickerRepository.findByMaxOldUpdateDate();
-        ticker.setLastUpdatePrice(new Date());
-        tickerRepository.saveAndFlush(ticker);
-
 
         String directUrl = url
                 .replace("[BOARD_ID]", ticker.getBoardId())
@@ -84,7 +88,12 @@ public class PriceService {
                     price.setVolume(priceJson.findValue("VALTODAY").asLong());
                     price.setPrevPrice((float)prevPrice);
 
-                    priceRepository.saveAndFlush(price);
+                    final Price savedPrice = priceRepository.saveAndFlush(price);
+
+                    ticker.setLastPrice(savedPrice);
+                    ticker.setLastUpdatePrice(new Date());
+                    final Ticker savedTicker = tickerRepository.save(ticker);
+                    portfolioService.updatePrice(savedTicker);
 
                     break;
                 }

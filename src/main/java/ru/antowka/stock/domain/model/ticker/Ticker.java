@@ -29,8 +29,11 @@ public class Ticker {
 
     private String boardId;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Price> prices;
+
+    @OneToOne(targetEntity = Price.class)
+    private Price lastPrice;
 
     private Date lastUpdatePrice;
 }

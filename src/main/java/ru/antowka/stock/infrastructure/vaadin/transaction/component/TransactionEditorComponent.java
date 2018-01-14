@@ -10,6 +10,7 @@ import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.antowka.stock.application.mapper.transaction.TransactionMapper;
 import ru.antowka.stock.application.representation.transaction.TransactionRepresentation;
+import ru.antowka.stock.application.service.PortfolioService;
 import ru.antowka.stock.application.service.TickerService;
 import ru.antowka.stock.application.service.TransactionService;
 import ru.antowka.stock.domain.model.ticker.Ticker;
@@ -33,6 +34,8 @@ public class TransactionEditorComponent extends VerticalLayout {
 
     private TickerService tickerService;
 
+    private PortfolioService portfolioService;
+
     private TransactionMapper transactionMapper;
 
     private TransactionRepresentation currentEditionTransaction;
@@ -55,10 +58,12 @@ public class TransactionEditorComponent extends VerticalLayout {
 
     @Autowired
     public TransactionEditorComponent(
-            TransactionService transactionService, TransactionMapper transactionMapper, TickerService tickerService) {
+            TransactionService transactionService,
+            TransactionMapper transactionMapper, TickerService tickerService, PortfolioService portfolioService) {
 
         this.transactionService = transactionService;
         this.tickerService = tickerService;
+        this.portfolioService = portfolioService;
         this.transactionMapper = transactionMapper;
 
         configComponentElements();
@@ -153,11 +158,13 @@ public class TransactionEditorComponent extends VerticalLayout {
 
     private void updateTransaction(TransactionRepresentation transactionRepresentation) {
         Transaction transaction = transactionMapper.toEntity(transactionRepresentation);
-        transactionService.update(transaction);
+        final Transaction savedTransaction = transactionService.update(transaction);
+        portfolioService.updatePosition(savedTransaction);
     }
 
     private void createTransaction(TransactionRepresentation transactionRepresentation) {
         Transaction transaction = transactionMapper.toEntity(transactionRepresentation);
-        transactionService.create(transaction);
+        final Transaction savedTransaction = transactionService.create(transaction);
+        portfolioService.updatePosition(savedTransaction);
     }
 }

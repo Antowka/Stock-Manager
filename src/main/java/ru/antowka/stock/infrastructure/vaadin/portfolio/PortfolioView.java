@@ -60,7 +60,7 @@ public class PortfolioView extends VerticalLayout implements View {
                 "ticker",
                 "amount",
                 "averagePrice",
-                "lastMarketPlace",
+                "lastMarketPrice",
                 "sum",
                 "diffPricesPercent",
                 "averageProfit");

@@ -18,6 +18,9 @@ import java.util.List;
 @Service
 public class TransactionService {
 
+    public static final String TRANSACTION_SELL = "SELL";
+    public static final String TRANSACTION_BUY = "BUY";
+
 
     private TransactionRepository transactionRepository;
     private TransactionTypeRepository transactionTypeRepository;

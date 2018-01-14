@@ -1,11 +1,9 @@
 package ru.antowka.stock.domain.model.portfolio.vo;
 
 import lombok.Data;
+import ru.antowka.stock.domain.model.ticker.Ticker;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Representation for position
@@ -16,12 +14,19 @@ import javax.persistence.Table;
 public class Position {
 
     @Id
-    @Column(name = "ticker_name")
-    private String ticker;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(targetEntity = Ticker.class)
+    private Ticker ticker;
+
     private Integer amount;
+
     private Float averagePrice;
-    private Float lastMarketPlace;
+
     private Float sum;
+
     private Float diffPricesPercent;
+
     private Float averageProfit;
 }
