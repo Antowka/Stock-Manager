@@ -42,7 +42,8 @@ public class PortfolioService {
 
         for (Position position : portfolio.getPositions()) {
             invested += position.getSum();
-            liquidationValue += position.getAmount() * position.getTicker().getLastPrice().getClose();
+            final Price lastPrice = position.getTicker().getLastPrice();
+            liquidationValue += position.getAmount() * (lastPrice != null ? lastPrice.getClose() : 0);
         }
 
         portfolio.setInvested(invested);
@@ -53,8 +54,18 @@ public class PortfolioService {
 
     public void updatePosition(Transaction transaction) {
 
-        final Position position = positionRepository
+        Position position = positionRepository
                 .findOneByTicker(transaction.getTicker());
+
+        if (position == null) {
+            position = new Position();
+            position.setAmount(0);
+            position.setAveragePrice(0f);
+            position.setSum(0f);
+            position.setAveragePrice(0f);
+            position.setDiffPricesPercent(0f);
+            position.setTicker(transaction.getTicker());
+        }
 
         int remainder = 0;
 

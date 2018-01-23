@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import ru.antowka.stock.application.mapper.Mapper;
 import ru.antowka.stock.application.representation.position.PositionRepresentation;
 import ru.antowka.stock.domain.model.portfolio.vo.Position;
+import ru.antowka.stock.domain.model.price.Price;
 
 /**
  * Mapper for position VIEW
@@ -22,7 +23,11 @@ public class PositionMapper implements Mapper<Position, PositionRepresentation> 
         representation.setAmount(entity.getAmount());
         representation.setDiffPricesPercent(entity.getDiffPricesPercent());
         representation.setAverageProfit(entity.getAverageProfit());
-        representation.setLastMarketPrice(entity.getTicker().getLastPrice().getClose());
+
+        final Price lastPrice = entity.getTicker().getLastPrice();
+        if (lastPrice != null) {
+            representation.setLastMarketPrice(lastPrice.getClose());
+        }
 
         return representation;
     }
