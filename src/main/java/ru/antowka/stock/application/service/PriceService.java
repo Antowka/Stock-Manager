@@ -60,6 +60,11 @@ public class PriceService {
 
             if (jsonNode == null) {
                 System.out.println("Can't read: " + directUrl);
+
+                final Ticker savedTicker = tickerRepository.save(ticker);
+                savedTicker.setLastUpdatePrice(new Date());
+                tickerRepository.saveAndFlush(savedTicker);
+
                 return;
             }
 
