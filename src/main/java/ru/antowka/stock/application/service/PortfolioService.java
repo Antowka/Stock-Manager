@@ -95,6 +95,8 @@ public class PortfolioService {
         final Position position = positionRepository
                 .findOneByTicker(ticker);
 
+        if (position == null) return;
+
         final Float closePrice = ticker.getLastPrice().getClose();
 
         final float currentSum = position.getAmount() * closePrice;

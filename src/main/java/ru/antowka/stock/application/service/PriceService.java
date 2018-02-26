@@ -79,10 +79,18 @@ public class PriceService {
 
                     ObjectNode priceJson = (ObjectNode) element;
                     double prevPrice = priceJson.findValue("PREVPRICE").asDouble();
+
                     double openPrice =  priceJson.findValue("OPEN").asDouble();
+                    openPrice = openPrice > 0 ? openPrice : prevPrice;
+
                     double highPrice =  priceJson.findValue("HIGH").asDouble();
+                    highPrice = highPrice > 0 ? highPrice : prevPrice;
+
                     double lowPrice =  priceJson.findValue("LOW").asDouble();
+                    lowPrice = lowPrice > 0 ? lowPrice : prevPrice;
+
                     double closePrice = priceJson.findValue("LAST").asDouble();
+                    closePrice = closePrice > 0 ? closePrice : prevPrice;
 
                     price.setOpen((float)openPrice);
                     price.setHigh((float)highPrice);
